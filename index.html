@@ -552,56 +552,6 @@
             color: var(--primary);
         }
 
-        /* Photos Grid */
-        .photos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .photo-card {
-            background-color: var(--card-light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        body.dark-mode .photo-card {
-            background-color: var(--card-dark);
-        }
-
-        .photo-card:hover {
-            transform: scale(1.03);
-        }
-
-        .photo-img {
-            width: 100%;
-            height: 150px;
-            background-color: #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #777;
-            overflow: hidden;
-        }
-
-        .photo-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        body.dark-mode .photo-img {
-            background-color: #2a2a2a;
-            color: #aaa;
-        }
-
-        .photo-title {
-            padding: 10px;
-            text-align: center;
-        }
-
         /* Loading Spinner */
         .loading {
             display: flex;
@@ -677,6 +627,282 @@
         .btn-small {
             padding: 6px 12px;
             font-size: 14px;
+        }
+
+        /* Live Match Highlight */
+        .live-match-highlight {
+            border: 2px solid #28a745;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+        }
+
+        .live-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #28a745;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        body.dark-mode .alert-warning {
+            background-color: #332701;
+            border-color: #665204;
+            color: #ffd351;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+
+        body.dark-mode .alert-info {
+            background-color: #062226;
+            border-color: #0c5460;
+            color: #6edff6;
+        }
+
+        /* Status Selector */
+        .status-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .status-option {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .status-option.active {
+            border-color: var(--primary);
+            background-color: rgba(225, 6, 0, 0.1);
+        }
+
+        body.dark-mode .status-option {
+            border-color: #444;
+        }
+
+        body.dark-mode .status-option.active {
+            border-color: var(--primary);
+            background-color: rgba(225, 6, 0, 0.2);
+        }
+
+        /* Tournament Management Styles */
+        .tournament-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tournament-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tournament-tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .tournament-section {
+            display: none;
+        }
+
+        .tournament-section.active {
+            display: block;
+        }
+
+        .tournament-form {
+            background-color: var(--card-light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .tournament-form {
+            background-color: var(--card-dark);
+        }
+
+        .tournament-list {
+            margin-top: 20px;
+        }
+
+        .tournament-item {
+            background-color: var(--bg-light);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body.dark-mode .tournament-item {
+            background-color: #2a2a2a;
+        }
+
+        .score-input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .match-score {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .match-score span {
+            font-weight: bold;
+        }
+
+        .tournament-round {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        body.dark-mode .tournament-round {
+            border-color: #444;
+        }
+
+        .round-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .team-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .team-selector .form-group {
+            flex: 1;
+        }
+
+        /* Atoll Management Styles */
+        .atoll-management {
+            margin-top: 20px;
+        }
+
+        .atoll-card {
+            background-color: var(--card-light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .atoll-card {
+            background-color: var(--card-dark);
+        }
+
+        .atoll-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.dark-mode .atoll-header {
+            border-bottom: 1px solid #444;
+        }
+
+        .atoll-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .island-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .island-item {
+            background-color: var(--bg-light);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .island-item {
+            background-color: #2a2a2a;
+        }
+
+        .island-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .island-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .island-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .island-name {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .island-actions {
+            display: flex;
+            gap: 10px;
         }
 
         /* Responsive */
@@ -796,6 +1022,22 @@
                 width: 100%;
                 justify-content: flex-end;
             }
+
+            .status-selector {
+                flex-direction: column;
+            }
+
+            .tournament-tabs {
+                flex-direction: column;
+            }
+
+            .team-selector {
+                flex-direction: column;
+            }
+
+            .island-list {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (min-width: 769px) {
@@ -841,13 +1083,17 @@
                     <i class="fas fa-calendar-alt"></i>
                     <span>Upcoming</span>
                 </div>
+                <div class="menu-item" data-target="live">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>Live Matches</span>
+                </div>
                 <div class="menu-item" data-target="matches">
                     <i class="fas fa-trophy"></i>
-                    <span>Matches</span>
+                    <span>Recent Matches</span>
                 </div>
-                <div class="menu-item" data-target="photos">
-                    <i class="fas fa-images"></i>
-                    <span>Photos</span>
+                <div class="menu-item" data-target="tournament">
+                    <i class="fas fa-list-ol"></i>
+                    <span>Matches Schedule</span>
                 </div>
                 <div class="menu-item" data-target="admin">
                     <i class="fas fa-cog"></i>
@@ -878,17 +1124,27 @@
                 </div>
             </div>
 
-            <!-- Matches Section -->
-            <div class="content-section" id="matches">
-                <h2 class="section-title">Live & Recent Matches</h2>
+            <!-- Live Matches Section -->
+            <div class="content-section" id="live">
+                <h2 class="section-title">Live Matches</h2>
                 <div class="youtube-player" id="youtubePlayer">
                     <button class="close-video" id="closeVideo">
                         <i class="fas fa-times"></i>
                     </button>
                     <div class="youtube-placeholder">
-                        Select a match to watch
+                        Select a live match to watch
                     </div>
                 </div>
+                <div class="matches-grid" id="liveMatchesGrid">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Matches Section -->
+            <div class="content-section" id="matches">
+                <h2 class="section-title">Recent Matches</h2>
                 <div class="matches-grid" id="matchesGrid">
                     <div class="loading">
                         <div class="spinner"></div>
@@ -896,12 +1152,29 @@
                 </div>
             </div>
 
-            <!-- Photos Section -->
-            <div class="content-section" id="photos">
-                <h2 class="section-title">Match Photos</h2>
-                <div class="photos-grid" id="photosGrid">
-                    <div class="loading">
-                        <div class="spinner"></div>
+            <!-- Tournament Schedule Section -->
+            <div class="content-section" id="tournament">
+                <h2 class="section-title">Tournament Schedule</h2>
+                <div class="tournament-tabs">
+                    <div class="tournament-tab active" data-tournament="atoll">Atoll Round</div>
+                    <div class="tournament-tab" data-tournament="zone">Zone Round</div>
+                </div>
+                
+                <div class="tournament-section active" id="atoll-round">
+                    <h3>Atoll Round Matches</h3>
+                    <div class="matches-grid" id="atollMatchesGrid">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tournament-section" id="zone-round">
+                    <h3>Zone Round Matches</h3>
+                    <div class="matches-grid" id="zoneMatchesGrid">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -910,73 +1183,106 @@
             <div class="content-section" id="admin">
                 <h2 class="section-title">Admin Panel</h2>
                 <div class="admin-panel">
-                    <h3>Add New Match</h3>
-                    <form class="admin-form" id="matchForm">
-                        <div class="form-group">
-                            <label for="matchStatus">Match Status</label>
-                            <select id="matchStatus" required>
-                                <option value="upcoming">Upcoming</option>
-                                <option value="live">Live</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="team1">Team 1</label>
-                            <input type="text" id="team1" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="team1Logo">Team 1 Logo URL</label>
-                            <input type="url" id="team1Logo" placeholder="https://example.com/logo1.png">
-                        </div>
-                        <div class="form-group">
-                            <label for="team2">Team 2</label>
-                            <input type="text" id="team2" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="team2Logo">Team 2 Logo URL</label>
-                            <input type="url" id="team2Logo" placeholder="https://example.com/logo2.png">
-                        </div>
-                        <div class="form-group">
-                            <label for="matchDate">Match Date & Time</label>
-                            <input type="datetime-local" id="matchDate" required>
-                        </div>
-                        <div class="form-group-row">
+                    <div id="liveMatchAlert" class="alert alert-info" style="display: none;">
+                        <i class="fas fa-info-circle"></i> Maximum 2 live matches allowed at the same time.
+                    </div>
+                    
+                    <div class="tournament-tabs">
+                        <div class="tournament-tab active" data-admin="regular">Regular Matches</div>
+                        <div class="tournament-tab" data-admin="atoll">Atoll Management</div>
+                    </div>
+                    
+                    <!-- Regular Match Form -->
+                    <div class="tournament-section active" id="regular-admin">
+                        <h3>Add New Match</h3>
+                        <form class="admin-form" id="matchForm">
                             <div class="form-group">
-                                <label for="upcomingYoutubeLink">Upcoming YouTube Link</label>
-                                <input type="url" id="upcomingYoutubeLink" placeholder="https://www.youtube.com/watch?v=...">
-                                <small>For promotional/trailer videos</small>
+                                <label for="matchStatus">Match Status</label>
+                                <select id="matchStatus" required>
+                                    <option value="upcoming">Upcoming</option>
+                                    <option value="live">Live</option>
+                                    <option value="completed">Completed</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="youtubeLink">Match YouTube Link</label>
-                                <input type="url" id="youtubeLink" placeholder="https://www.youtube.com/watch?v=...">
-                                <small>For live/replay videos</small>
+                                <label for="team1">Team 1</label>
+                                <select id="team1" required>
+                                    <option value="">-- Select Team --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="team2">Team 2</label>
+                                <select id="team2" required>
+                                    <option value="">-- Select Team --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="matchDate">Match Date & Time</label>
+                                <input type="datetime-local" id="matchDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="youtubeLink">YouTube Video URL</label>
+                                <input type="url" id="youtubeLink" placeholder="https://www.youtube.com/watch?v=..." required>
+                                <small>For live matches and replays</small>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Add Match</button>
+                                <button type="reset" class="btn btn-secondary">Clear</button>
+                            </div>
+                        </form>
+
+                        <div class="admin-list">
+                            <h3>Manage Matches</h3>
+                            <div id="adminContentList">
+                                <div class="loading">
+                                    <div class="spinner"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Add Match</button>
-                            <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                    
+                    <!-- Atoll Management -->
+                    <div class="tournament-section" id="atoll-admin">
+                        <h3>Atoll Management</h3>
+                        
+                        <div class="tournament-form">
+                            <h4>Add New Atoll</h4>
+                            <form class="admin-form" id="atollForm">
+                                <div class="form-group">
+                                    <label for="atollName">Atoll Name</label>
+                                    <input type="text" id="atollName" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Add Atoll</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-
-                    <h3>Add New Photo</h3>
-                    <form class="admin-form" id="photoForm">
-                        <div class="form-group">
-                            <label for="photoTitle">Photo Title</label>
-                            <input type="text" id="photoTitle" required>
+                        
+                        <div class="tournament-form">
+                            <h4>Add Island to Atoll</h4>
+                            <form class="admin-form" id="islandForm">
+                                <div class="form-group">
+                                    <label for="atollSelect">Select Atoll</label>
+                                    <select id="atollSelect" required>
+                                        <option value="">-- Select Atoll --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="islandName">Island Name</label>
+                                    <input type="text" id="islandName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="islandLogo">Team Logo URL</label>
+                                    <input type="url" id="islandLogo" placeholder="https://example.com/logo.png">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Add Island</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="photoUrl">Photo URL</label>
-                            <input type="url" id="photoUrl" required placeholder="https://example.com/photo.jpg">
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Add Photo</button>
-                            <button type="reset" class="btn btn-secondary">Clear</button>
-                        </div>
-                    </form>
-
-                    <div class="admin-list">
-                        <h3>Manage Content</h3>
-                        <div id="adminContentList">
+                        
+                        <div class="atoll-management" id="atollManagementList">
+                            <h3>Atolls and Islands</h3>
                             <div class="loading">
                                 <div class="spinner"></div>
                             </div>
@@ -1010,11 +1316,12 @@
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
         const matchesGridUpcoming = document.getElementById('upcomingMatchesGrid');
+        const matchesGridLive = document.getElementById('liveMatchesGrid');
         const matchesGridMatches = document.getElementById('matchesGrid');
+        const atollMatchesGrid = document.getElementById('atollMatchesGrid');
+        const zoneMatchesGrid = document.getElementById('zoneMatchesGrid');
         const youtubePlayer = document.getElementById('youtubePlayer');
-        const photosGrid = document.getElementById('photosGrid');
         const matchForm = document.getElementById('matchForm');
-        const photoForm = document.getElementById('photoForm');
         const adminContentList = document.getElementById('adminContentList');
         const toggleSidebar = document.getElementById('toggleSidebar');
         const sidebar = document.getElementById('sidebar');
@@ -1023,10 +1330,31 @@
         const videoOverlay = document.getElementById('videoOverlay');
         const closeOverlay = document.getElementById('closeOverlay');
         const videoPlayer = document.getElementById('videoPlayer');
+        const liveMatchAlert = document.getElementById('liveMatchAlert');
+        
+        // Tournament tabs
+        const tournamentTabs = document.querySelectorAll('.tournament-tab');
+        const tournamentSections = document.querySelectorAll('.tournament-section');
+        
+        // Admin tabs
+        const adminTabs = document.querySelectorAll('[data-admin]');
+        
+        // Atoll management forms
+        const atollForm = document.getElementById('atollForm');
+        const islandForm = document.getElementById('islandForm');
+        const atollSelect = document.getElementById('atollSelect');
+        const team1Select = document.getElementById('team1');
+        const team2Select = document.getElementById('team2');
+        const atollManagementList = document.getElementById('atollManagementList');
 
         // Global variables
         let matches = [];
-        let photos = [];
+        let atollMatches = [];
+        let zoneMatches = [];
+        let atolls = [];
+        let islands = [];
+        let liveMatchesCount = 0;
+        const MAX_LIVE_MATCHES = 2;
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', function() {
@@ -1037,7 +1365,8 @@
 
             // Load initial data from Firebase
             loadMatches();
-            loadPhotos();
+            loadTournamentData();
+            loadAtollsAndIslands();
 
             // Set up event listeners
             setupEventListeners();
@@ -1068,9 +1397,40 @@
                 });
             });
 
+            // Tournament tabs
+            tournamentTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tournamentType = this.getAttribute('data-tournament');
+                    
+                    // Update active tab
+                    tournamentTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target section
+                    tournamentSections.forEach(section => section.classList.remove('active'));
+                    document.getElementById(`${tournamentType}-round`).classList.add('active');
+                });
+            });
+            
+            // Admin tabs
+            adminTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const adminType = this.getAttribute('data-admin');
+                    
+                    // Update active tab
+                    adminTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target section
+                    document.querySelectorAll('.tournament-section').forEach(section => section.classList.remove('active'));
+                    document.getElementById(`${adminType}-admin`).classList.add('active');
+                });
+            });
+
             // Form submissions
             matchForm.addEventListener('submit', handleMatchSubmit);
-            photoForm.addEventListener('submit', handlePhotoSubmit);
+            atollForm.addEventListener('submit', handleAtollSubmit);
+            islandForm.addEventListener('submit', handleIslandSubmit);
             
             // Sidebar toggle
             toggleSidebar.addEventListener('click', function() {
@@ -1097,7 +1457,7 @@
                         <i class="fas fa-times"></i>
                     </button>
                     <div class="youtube-placeholder">
-                        Select a match to watch
+                        Select a live match to watch
                     </div>
                 `;
                 // Reattach event listener to the new close button
@@ -1107,7 +1467,7 @@
                             <i class="fas fa-times"></i>
                         </button>
                         <div class="youtube-placeholder">
-                            Select a match to watch
+                            Select a live match to watch
                         </div>
                     `;
                     document.getElementById('closeVideo').addEventListener('click', arguments.callee);
@@ -1154,34 +1514,110 @@
         function loadMatches() {
             database.ref('matches').on('value', (snapshot) => {
                 matches = [];
+                liveMatchesCount = 0;
+                
                 snapshot.forEach((childSnapshot) => {
                     const match = childSnapshot.val();
                     match.id = childSnapshot.key;
                     matches.push(match);
+                    
+                    // Count live matches
+                    if (match.status === 'live') {
+                        liveMatchesCount++;
+                    }
                 });
+                
                 renderMatches();
                 renderAdminContent();
+                updateLiveMatchAlert();
             });
         }
 
-        // Load photos from Firebase
-        function loadPhotos() {
-            database.ref('photos').on('value', (snapshot) => {
-                photos = [];
+        // Load tournament data from Firebase
+        function loadTournamentData() {
+            // Load atoll matches
+            database.ref('atollMatches').on('value', (snapshot) => {
+                atollMatches = [];
                 snapshot.forEach((childSnapshot) => {
-                    const photo = childSnapshot.val();
-                    photo.id = childSnapshot.key;
-                    photos.push(photo);
+                    const match = childSnapshot.val();
+                    match.id = childSnapshot.key;
+                    atollMatches.push(match);
                 });
-                renderPhotos();
-                renderAdminContent();
+                renderAtollMatches();
             });
+            
+            // Load zone matches
+            database.ref('zoneMatches').on('value', (snapshot) => {
+                zoneMatches = [];
+                snapshot.forEach((childSnapshot) => {
+                    const match = childSnapshot.val();
+                    match.id = childSnapshot.key;
+                    zoneMatches.push(match);
+                });
+                renderZoneMatches();
+            });
+        }
+
+        // Load atolls and islands from Firebase
+        function loadAtollsAndIslands() {
+            // Load atolls
+            database.ref('atolls').on('value', (snapshot) => {
+                atolls = [];
+                snapshot.forEach((childSnapshot) => {
+                    const atoll = childSnapshot.val();
+                    atoll.id = childSnapshot.key;
+                    atolls.push(atoll);
+                });
+                updateAtollDropdowns();
+                renderAtollManagement();
+            });
+            
+            // Load islands
+            database.ref('islands').on('value', (snapshot) => {
+                islands = [];
+                snapshot.forEach((childSnapshot) => {
+                    const island = childSnapshot.val();
+                    island.id = childSnapshot.key;
+                    islands.push(island);
+                });
+                updateTeamDropdowns();
+                renderAtollManagement();
+            });
+        }
+
+        // Update dropdowns with atoll data
+        function updateAtollDropdowns() {
+            atollSelect.innerHTML = '<option value="">-- Select Atoll --</option>';
+            atolls.forEach(atoll => {
+                atollSelect.innerHTML += `<option value="${atoll.id}">${atoll.name}</option>`;
+            });
+        }
+
+        // Update dropdowns with team data
+        function updateTeamDropdowns() {
+            team1Select.innerHTML = '<option value="">-- Select Team --</option>';
+            team2Select.innerHTML = '<option value="">-- Select Team --</option>';
+            
+            islands.forEach(island => {
+                team1Select.innerHTML += `<option value="${island.id}" data-logo="${island.logo || ''}">${island.name}</option>`;
+                team2Select.innerHTML += `<option value="${island.id}" data-logo="${island.logo || ''}">${island.name}</option>`;
+            });
+        }
+
+        // Update live match alert visibility
+        function updateLiveMatchAlert() {
+            if (liveMatchesCount >= MAX_LIVE_MATCHES) {
+                liveMatchAlert.style.display = 'block';
+            } else {
+                liveMatchAlert.style.display = 'none';
+            }
         }
 
         // Render Matches
         function renderMatches() {
             // Clear existing content
             matchesGridUpcoming.innerHTML = '';
+            matchesGridLive.innerHTML = '';
             matchesGridMatches.innerHTML = '';
 
             // Sort matches by date
@@ -1194,6 +1630,8 @@
                 // Add to appropriate section based on status
                 if (match.status === 'upcoming') {
                     matchesGridUpcoming.appendChild(matchCard);
+                } else if (match.status === 'live') {
+                    matchesGridLive.appendChild(matchCard);
                 } else {
                     matchesGridMatches.appendChild(matchCard);
                 }
@@ -1204,8 +1642,78 @@
                 matchesGridUpcoming.innerHTML = '<p>No upcoming matches scheduled.</p>';
             }
             
+            if (matchesGridLive.children.length === 0) {
+                matchesGridLive.innerHTML = '<p>No live matches at the moment.</p>';
+            }
+            
             if (matchesGridMatches.children.length === 0) {
-                matchesGridMatches.innerHTML = '<p>No matches available.</p>';
+                matchesGridMatches.innerHTML = '<p>No recent matches available.</p>';
+            }
+        }
+
+        // Render Atoll Matches
+        function renderAtollMatches() {
+            atollMatchesGrid.innerHTML = '';
+            
+            if (atollMatches.length === 0) {
+                atollMatchesGrid.innerHTML = '<p>No atoll round matches scheduled.</p>';
+                return;
+            }
+            
+            // Group matches by round
+            const rounds = {};
+            atollMatches.forEach(match => {
+                if (!rounds[match.round]) {
+                    rounds[match.round] = [];
+                }
+                rounds[match.round].push(match);
+            });
+            
+            // Create match cards for each round
+            for (const round in rounds) {
+                const roundDiv = document.createElement('div');
+                roundDiv.className = 'tournament-round';
+                roundDiv.innerHTML = `<div class="round-title">${round}</div>`;
+                
+                rounds[round].forEach(match => {
+                    const matchCard = createTournamentMatchCard(match, 'atoll');
+                    roundDiv.appendChild(matchCard);
+                });
+                
+                atollMatchesGrid.appendChild(roundDiv);
+            }
+        }
+
+        // Render Zone Matches
+        function renderZoneMatches() {
+            zoneMatchesGrid.innerHTML = '';
+            
+            if (zoneMatches.length === 0) {
+                zoneMatchesGrid.innerHTML = '<p>No zone round matches scheduled.</p>';
+                return;
+            }
+            
+            // Group matches by round
+            const rounds = {};
+            zoneMatches.forEach(match => {
+                if (!rounds[match.round]) {
+                    rounds[match.round] = [];
+                }
+                rounds[match.round].push(match);
+            });
+            
+            // Create match cards for each round
+            for (const round in rounds) {
+                const roundDiv = document.createElement('div');
+                roundDiv.className = 'tournament-round';
+                roundDiv.innerHTML = `<div class="round-title">${round}</div>`;
+                
+                rounds[round].forEach(match => {
+                    const matchCard = createTournamentMatchCard(match, 'zone');
+                    roundDiv.appendChild(matchCard);
+                });
+                
+                zoneMatchesGrid.appendChild(roundDiv);
             }
         }
 
@@ -1214,8 +1722,19 @@
             const matchDate = new Date(match.date);
             const now = new Date();
             
+            // Find team details
+            const team1 = islands.find(island => island.id === match.team1);
+            const team2 = islands.find(island => island.id === match.team2);
+            
+            if (!team1 || !team2) return document.createElement('div'); // Skip if teams not found
+            
             const card = document.createElement('div');
             card.className = 'match-card';
+            
+            // Add highlight for live matches
+            if (match.status === 'live') {
+                card.classList.add('live-match-highlight');
+            }
             
             // Determine status text and class
             let statusText = '';
@@ -1225,7 +1744,7 @@
                 statusText = 'Upcoming Match';
                 statusClass = 'status-upcoming';
             } else if (match.status === 'live') {
-                statusText = 'Live Match';
+                statusText = `<span class="live-indicator"></span>Live Match`;
                 statusClass = 'status-live';
             } else {
                 statusText = 'Recent Match';
@@ -1239,22 +1758,22 @@
                 <div class="match-teams">
                     <div class="team">
                         <div class="team-logo">
-                            ${match.team1Logo ? 
-                                `<img src="${match.team1Logo}" alt="${match.team1}" onerror="this.parentElement.innerHTML='${match.team1.substring(0, 2)}'">` : 
-                                match.team1.substring(0, 2)
+                            ${team1.logo ? 
+                                `<img src="${team1.logo}" alt="${team1.name}" onerror="this.parentElement.innerHTML='${team1.name.substring(0, 2)}'">` : 
+                                team1.name.substring(0, 2)
                             }
                         </div>
-                        <span>${match.team1}</span>
+                        <span>${team1.name}</span>
                     </div>
                     <div class="vs">VS</div>
                     <div class="team">
                         <div class="team-logo">
-                            ${match.team2Logo ? 
-                                `<img src="${match.team2Logo}" alt="${match.team2}" onerror="this.parentElement.innerHTML='${match.team2.substring(0, 2)}'">` : 
-                                match.team2.substring(0, 2)
+                            ${team2.logo ? 
+                                `<img src="${team2.logo}" alt="${team2.name}" onerror="this.parentElement.innerHTML='${team2.name.substring(0, 2)}'">` : 
+                                team2.name.substring(0, 2)
                             }
                         </div>
-                        <span>${match.team2}</span>
+                        <span>${team2.name}</span>
                     </div>
                 </div>
                 <div class="match-time">
@@ -1262,14 +1781,14 @@
                 </div>
                 <div class="match-info">
                     <div class="match-actions">
-                        ${match.upcomingYoutubeLink ? 
-                            `<button class="btn btn-primary btn-small watch-upcoming-btn" data-link="${match.upcomingYoutubeLink}">
-                                Watch Preview
+                        ${match.status === 'live' && match.youtubeLink ? 
+                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}">
+                                Watch Live
                             </button>` : ''
                         }
-                        ${match.youtubeLink ? 
+                        ${match.status === 'completed' && match.youtubeLink ? 
                             `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}">
-                                ${match.status === 'live' ? 'Watch Live' : 'Watch Replay'}
+                                Watch Replay
                             </button>` : ''
                         }
                     </div>
@@ -1281,18 +1800,80 @@
             if (watchBtn) {
                 watchBtn.addEventListener('click', function() {
                     if (match.youtubeLink) {
-                        // Load YouTube video directly in the app screen
-                        loadYouTubeVideo(match.youtubeLink, false);
+                        // Load YouTube video directly in the app screen with autoplay
+                        loadYouTubeVideo(match.youtubeLink, false, true);
                     }
                 });
             }
             
-            const watchUpcomingBtn = card.querySelector('.watch-upcoming-btn');
-            if (watchUpcomingBtn) {
-                watchUpcomingBtn.addEventListener('click', function() {
-                    if (match.upcomingYoutubeLink) {
-                        // Load YouTube video in full overlay
-                        loadYouTubeVideo(match.upcomingYoutubeLink, true);
+            return card;
+        }
+
+        // Create Tournament Match Card
+        function createTournamentMatchCard(match, type) {
+            const matchDate = new Date(match.date);
+            const team1 = type === 'atoll' 
+                ? islands.find(t => t.id === match.team1Id) 
+                : islands.find(t => t.id === match.team1Id);
+            const team2 = type === 'atoll' 
+                ? islands.find(t => t.id === match.team2Id) 
+                : islands.find(t => t.id === match.team2Id);
+            
+            if (!team1 || !team2) return document.createElement('div'); // Skip if teams not found
+            
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            
+            card.innerHTML = `
+                <div class="match-header">
+                    ${match.round}
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-logo">
+                            ${team1.logo ? 
+                                `<img src="${team1.logo}" alt="${team1.name}" onerror="this.parentElement.innerHTML='${team1.name.substring(0, 2)}'">` : 
+                                team1.name.substring(0, 2)
+                            }
+                        </div>
+                        <span>${team1.name}</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <div class="team-logo">
+                            ${team2.logo ? 
+                                `<img src="${team2.logo}" alt="${team2.name}" onerror="this.parentElement.innerHTML='${team2.name.substring(0, 2)}'">` : 
+                                team2.name.substring(0, 2)
+                            }
+                        </div>
+                        <span>${team2.name}</span>
+                    </div>
+                </div>
+                <div class="match-time">
+                    ${matchDate.toLocaleDateString()} at ${matchDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                </div>
+                ${match.score1 !== undefined && match.score2 !== undefined ? `
+                    <div class="match-score" style="text-align: center; padding: 10px; font-weight: bold;">
+                        ${match.score1} - ${match.score2}
+                    </div>
+                ` : ''}
+                <div class="match-info">
+                    <div class="match-actions">
+                        ${match.youtubeLink ? 
+                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}">
+                                Watch
+                            </button>` : ''
+                        }
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners to watch buttons
+            const watchBtn = card.querySelector('.watch-btn');
+            if (watchBtn) {
+                watchBtn.addEventListener('click', function() {
+                    if (match.youtubeLink) {
+                        loadYouTubeVideo(match.youtubeLink, false, true);
                     }
                 });
             }
@@ -1301,7 +1882,7 @@
         }
 
         // Load YouTube Video
-        function loadYouTubeVideo(link, useOverlay = false) {
+        function loadYouTubeVideo(link, useOverlay = false, autoplay = true) {
             // Extract video ID from various YouTube URL formats
             let videoId = '';
             if (link.includes('youtube.com/embed/')) {
@@ -1317,13 +1898,15 @@
             }
             
             if (videoId) {
+                const autoplayParam = autoplay ? '?autoplay=1' : '';
+                
                 if (useOverlay) {
                     // Use full screen overlay for better viewing
                     videoPlayer.innerHTML = `
                         <iframe 
                             width="100%" 
                             height="100%" 
-                            src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                            src="https://www.youtube.com/embed/${videoId}${autoplayParam}" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
@@ -1339,7 +1922,7 @@
                         <iframe 
                             width="100%" 
                             height="100%" 
-                            src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                            src="https://www.youtube.com/embed/${videoId}${autoplayParam}" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
@@ -1353,7 +1936,7 @@
                                 <i class="fas fa-times"></i>
                             </button>
                             <div class="youtube-placeholder">
-                                Select a match to watch
+                                Select a live match to watch
                             </div>
                         `;
                         document.getElementById('closeVideo').addEventListener('click', arguments.callee);
@@ -1375,7 +1958,7 @@
                                 <i class="fas fa-times"></i>
                             </button>
                             <div class="youtube-placeholder">
-                                Select a match to watch
+                                Select a live match to watch
                             </div>
                         `;
                         document.getElementById('closeVideo').addEventListener('click', arguments.callee);
@@ -1384,50 +1967,27 @@
             }
         }
 
-        // Render Photos
-        function renderPhotos() {
-            photosGrid.innerHTML = '';
-            
-            if (photos.length === 0) {
-                photosGrid.innerHTML = '<p>No photos available.</p>';
-                return;
-            }
-            
-            photos.forEach(photo => {
-                const photoCard = document.createElement('div');
-                photoCard.className = 'photo-card';
-                photoCard.innerHTML = `
-                    <div class="photo-img">
-                        <img src="${photo.url}" alt="${photo.title}" onerror="this.src='https://via.placeholder.com/300x200/CCCCCC/666666?text=Image+Not+Found'">
-                    </div>
-                    <div class="photo-title">${photo.title}</div>
-                `;
-                
-                photosGrid.appendChild(photoCard);
-            });
-        }
-
         // Handle Match Form Submission
         function handleMatchSubmit(e) {
             e.preventDefault();
             
             const matchStatus = document.getElementById('matchStatus').value;
             const team1 = document.getElementById('team1').value;
-            const team1Logo = document.getElementById('team1Logo').value;
             const team2 = document.getElementById('team2').value;
-            const team2Logo = document.getElementById('team2Logo').value;
             const matchDate = document.getElementById('matchDate').value;
-            const upcomingYoutubeLink = document.getElementById('upcomingYoutubeLink').value;
             const youtubeLink = document.getElementById('youtubeLink').value;
+            
+            // Check if trying to add a live match when maximum reached
+            if (matchStatus === 'live' && liveMatchesCount >= MAX_LIVE_MATCHES) {
+                alert(`Maximum ${MAX_LIVE_MATCHES} live matches allowed. Please complete or remove an existing live match first.`);
+                return;
+            }
             
             const newMatch = {
                 status: matchStatus,
                 team1,
-                team1Logo: team1Logo || null,
                 team2,
-                team2Logo: team2Logo || null,
                 date: matchDate,
-                upcomingYoutubeLink: upcomingYoutubeLink || null,
                 youtubeLink: youtubeLink || null
             };
             
@@ -1442,26 +2002,49 @@
                 });
         }
 
-        // Handle Photo Form Submission
-        function handlePhotoSubmit(e) {
+        // Handle Atoll Form Submission
+        function handleAtollSubmit(e) {
             e.preventDefault();
             
-            const photoTitle = document.getElementById('photoTitle').value;
-            const photoUrl = document.getElementById('photoUrl').value;
+            const atollName = document.getElementById('atollName').value;
             
-            const newPhoto = {
-                title: photoTitle,
-                url: photoUrl
+            const newAtoll = {
+                name: atollName
             };
             
             // Save to Firebase
-            database.ref('photos').push(newPhoto)
+            database.ref('atolls').push(newAtoll)
                 .then(() => {
-                    alert('Photo added successfully!');
-                    photoForm.reset();
+                    alert('Atoll added successfully!');
+                    atollForm.reset();
                 })
                 .catch((error) => {
-                    alert('Error adding photo: ' + error.message);
+                    alert('Error adding atoll: ' + error.message);
+                });
+        }
+
+        // Handle Island Form Submission
+        function handleIslandSubmit(e) {
+            e.preventDefault();
+            
+            const atollId = document.getElementById('atollSelect').value;
+            const islandName = document.getElementById('islandName').value;
+            const islandLogo = document.getElementById('islandLogo').value;
+            
+            const newIsland = {
+                atollId,
+                name: islandName,
+                logo: islandLogo || null
+            };
+            
+            // Save to Firebase
+            database.ref('islands').push(newIsland)
+                .then(() => {
+                    alert('Island added successfully!');
+                    islandForm.reset();
+                })
+                .catch((error) => {
+                    alert('Error adding island: ' + error.message);
                 });
         }
 
@@ -1469,28 +2052,41 @@
         function renderAdminContent() {
             adminContentList.innerHTML = '';
             
-            if (matches.length === 0 && photos.length === 0) {
-                adminContentList.innerHTML = '<p>No content to manage.</p>';
+            if (matches.length === 0) {
+                adminContentList.innerHTML = '<p>No matches to manage.</p>';
                 return;
             }
             
             // Add matches to admin list
             matches.forEach(match => {
+                // Find team details
+                const team1 = islands.find(island => island.id === match.team1);
+                const team2 = islands.find(island => island.id === match.team2);
+                
+                if (!team1 || !team2) return; // Skip if teams not found
+                
                 const adminItem = document.createElement('div');
                 adminItem.className = 'admin-item';
                 adminItem.innerHTML = `
                     <div>
-                        <strong>${match.team1} vs ${match.team2}</strong>
-                        <div>${new Date(match.date).toLocaleString()} - ${match.status}</div>
+                        <strong>${team1.name} vs ${team2.name}</strong>
+                        <div>${new Date(match.date).toLocaleString()} - <span class="match-status status-${match.status}">${match.status}</span></div>
                         <div class="admin-links">
-                            ${match.upcomingYoutubeLink ? `<small>Preview: ${match.upcomingYoutubeLink}</small><br>` : ''}
-                            ${match.youtubeLink ? `<small>Match: ${match.youtubeLink}</small>` : ''}
+                            ${match.youtubeLink ? `<small>YouTube: ${match.youtubeLink}</small>` : ''}
                         </div>
                     </div>
                     <div class="item-actions">
-                        <button class="action-btn edit-btn" data-id="${match.id}" data-type="match">
-                            <i class="fas fa-edit"></i>
-                        </button>
+                        <div class="status-selector">
+                            <div class="status-option ${match.status === 'upcoming' ? 'active' : ''}" data-id="${match.id}" data-status="upcoming">
+                                Upcoming
+                            </div>
+                            <div class="status-option ${match.status === 'live' ? 'active' : ''}" data-id="${match.id}" data-status="live">
+                                Live
+                            </div>
+                            <div class="status-option ${match.status === 'completed' ? 'active' : ''}" data-id="${match.id}" data-status="completed">
+                                Completed
+                            </div>
+                        </div>
                         <button class="action-btn delete-btn" data-id="${match.id}" data-type="match">
                             <i class="fas fa-trash"></i>
                         </button>
@@ -1500,80 +2096,108 @@
                 adminContentList.appendChild(adminItem);
             });
             
-            // Add photos to admin list
-            photos.forEach(photo => {
-                const adminItem = document.createElement('div');
-                adminItem.className = 'admin-item';
-                adminItem.innerHTML = `
-                    <div>
-                        <strong>${photo.title}</strong>
-                        <div>${photo.url}</div>
-                    </div>
-                    <div class="item-actions">
-                        <button class="action-btn edit-btn" data-id="${photo.id}" data-type="photo">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="action-btn delete-btn" data-id="${photo.id}" data-type="photo">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-                
-                adminContentList.appendChild(adminItem);
+            // Add event listeners to status options
+            document.querySelectorAll('.status-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const matchId = this.getAttribute('data-id');
+                    const newStatus = this.getAttribute('data-status');
+                    
+                    // Check if trying to set a match as live when maximum reached
+                    if (newStatus === 'live' && liveMatchesCount >= MAX_LIVE_MATCHES) {
+                        const currentLiveMatches = matches.filter(m => m.status === 'live');
+                        const isCurrentlyLive = currentLiveMatches.some(m => m.id === matchId);
+                        
+                        if (!isCurrentlyLive) {
+                            alert(`Maximum ${MAX_LIVE_MATCHES} live matches allowed. Please complete or remove an existing live match first.`);
+                            return;
+                        }
+                    }
+                    
+                    updateMatchStatus(matchId, newStatus);
+                });
             });
             
-            // Add event listeners to action buttons
-            document.querySelectorAll('.edit-btn').forEach(btn => {
-                btn.addEventListener('click', handleEdit);
-            });
-            
+            // Add event listeners to delete buttons
             document.querySelectorAll('.delete-btn').forEach(btn => {
                 btn.addEventListener('click', handleDelete);
             });
         }
 
-        // Handle Edit
-        function handleEdit(e) {
-            const id = e.currentTarget.getAttribute('data-id');
-            const type = e.currentTarget.getAttribute('data-type');
+        // Render Atoll Management
+        function renderAtollManagement() {
+            atollManagementList.innerHTML = '';
             
-            if (type === 'match') {
-                const match = matches.find(m => m.id === id);
-                if (match) {
-                    document.getElementById('matchStatus').value = match.status;
-                    document.getElementById('team1').value = match.team1;
-                    document.getElementById('team1Logo').value = match.team1Logo || '';
-                    document.getElementById('team2').value = match.team2;
-                    document.getElementById('team2Logo').value = match.team2Logo || '';
-                    document.getElementById('matchDate').value = match.date.replace(' ', 'T');
-                    document.getElementById('upcomingYoutubeLink').value = match.upcomingYoutubeLink || '';
-                    document.getElementById('youtubeLink').value = match.youtubeLink || '';
-                    
-                    // Remove the match from Firebase
-                    database.ref('matches/' + id).remove()
-                        .then(() => {
-                            alert('Match loaded for editing!');
-                        })
-                        .catch((error) => {
-                            alert('Error loading match: ' + error.message);
-                        });
-                }
-            } else if (type === 'photo') {
-                const photo = photos.find(p => p.id === id);
-                if (photo) {
-                    document.getElementById('photoTitle').value = photo.title;
-                    document.getElementById('photoUrl').value = photo.url;
-                    
-                    // Remove the photo from Firebase
-                    database.ref('photos/' + id).remove()
-                        .then(() => {
-                            alert('Photo loaded for editing!');
-                        })
-                        .catch((error) => {
-                            alert('Error loading photo: ' + error.message);
-                        });
-                }
+            if (atolls.length === 0) {
+                atollManagementList.innerHTML = '<p>No atolls added yet.</p>';
+                return;
             }
+            
+            // Add atolls to management list
+            atolls.forEach(atoll => {
+                const atollCard = document.createElement('div');
+                atollCard.className = 'atoll-card';
+                
+                // Get islands for this atoll
+                const atollIslands = islands.filter(island => island.atollId === atoll.id);
+                
+                atollCard.innerHTML = `
+                    <div class="atoll-header">
+                        <div class="atoll-name">${atoll.name}</div>
+                        <div class="item-actions">
+                            <button class="action-btn delete-btn" data-id="${atoll.id}" data-type="atoll">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="island-list">
+                        ${atollIslands.length > 0 ? 
+                            atollIslands.map(island => `
+                                <div class="island-item">
+                                    <div class="island-logo">
+                                        ${island.logo ? 
+                                            `<img src="${island.logo}" alt="${island.name}" onerror="this.parentElement.innerHTML='${island.name.substring(0, 2)}'">` : 
+                                            island.name.substring(0, 2)
+                                        }
+                                    </div>
+                                    <div class="island-name">${island.name}</div>
+                                    <div class="island-actions">
+                                        <button class="action-btn delete-btn" data-id="${island.id}" data-type="island">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('') : 
+                            '<p>No islands added to this atoll yet.</p>'
+                        }
+                    </div>
+                `;
+                
+                atollManagementList.appendChild(atollCard);
+            });
+            
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-btn[data-type="atoll"], .delete-btn[data-type="island"]').forEach(btn => {
+                btn.addEventListener('click', handleDelete);
+            });
+        }
+
+        // Update match status
+        function updateMatchStatus(matchId, newStatus) {
+            database.ref('matches/' + matchId).update({
+                status: newStatus
+            })
+            .then(() => {
+                // Update the active status in the UI
+                document.querySelectorAll(`[data-id="${matchId}"]`).forEach(option => {
+                    option.classList.remove('active');
+                    if (option.getAttribute('data-status') === newStatus) {
+                        option.classList.add('active');
+                    }
+                });
+            })
+            .catch((error) => {
+                alert('Error updating match status: ' + error.message);
+            });
         }
 
         // Handle Delete
@@ -1590,13 +2214,21 @@
                         .catch((error) => {
                             alert('Error deleting match: ' + error.message);
                         });
-                } else if (type === 'photo') {
-                    database.ref('photos/' + id).remove()
+                } else if (type === 'atoll') {
+                    database.ref('atolls/' + id).remove()
                         .then(() => {
-                            alert('Photo deleted successfully!');
+                            alert('Atoll deleted successfully!');
                         })
                         .catch((error) => {
-                            alert('Error deleting photo: ' + error.message);
+                            alert('Error deleting atoll: ' + error.message);
+                        });
+                } else if (type === 'island') {
+                    database.ref('islands/' + id).remove()
+                        .then(() => {
+                            alert('Island deleted successfully!');
+                        })
+                        .catch((error) => {
+                            alert('Error deleting island: ' + error.message);
                         });
                 }
             }
