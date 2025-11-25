@@ -4634,5 +4634,61 @@
             }
         }
     </script>
+    <script>
+
+
+// Send Verification Code
+function sendVerificationCodeHandler() {
+    const fullPhoneNumber = countryCode.value + phoneNumber.value;
+    
+    // Configure Firebase reCAPTCHA verifier
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sendVerificationCode', {
+        'size': 'invisible',
+        'callback': function(response) {
+            // reCAPTCHA solved, allow signInWithPhoneNumber
+            sendVerificationCodeHandler();
+        }
+    });
+    
+    const appVerifier = window.recaptchaVerifier;
+    
+    // Send verification code
+    auth.signInWithPhoneNumber(fullPhoneNumber, appVerifier)
+        .then((result) => {
+            confirmationResult = result;
+            // Show verification code step
+            phoneNumberStep.style.display = 'none';
+            verificationCodeStep.style.display = 'block';
+            
+            // Start resend timer
+            startResendTimer();
+        })
+        .catch((error) => {
+            console.error('Error sending verification code:', error);
+            alert('Error sending verification code: ' + error.message);
+        });
+}
+
+// Verify Code
+function verifyCodeHandler() {
+    const code = verificationCode.value;
+    
+    confirmationResult.confirm(code)
+        .then((result) => {
+            // User signed in successfully
+            const user = result.user;
+            
+            // Complete user registration with phone number
+            completeUserRegistration(user);
+            
+            // Hide phone auth modal
+            phoneAuthModal.style.display = 'none';
+        })
+        .catch((error) => {
+            console.error('Error verifying code:', error);
+            alert('Error verifying code: ' + error.message);
+        });
+}
+    </script>
 </body>
 </html>
