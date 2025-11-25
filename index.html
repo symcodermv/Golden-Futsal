@@ -294,7 +294,7 @@
             background-color: rgba(225, 6, 0, 0.1);
         }
 
-        /* Main App Styles (existing) */
+        /* Main App Styles */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -1449,6 +1449,115 @@
             background-color: rgba(225, 6, 0, 0.2);
         }
 
+        /* User Management in Admin Panel */
+        .user-management {
+            margin-top: 20px;
+        }
+
+        .user-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .user-card {
+            background-color: var(--card-light);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .user-card {
+            background-color: var(--card-dark);
+        }
+
+        .user-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .user-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .user-card-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+
+        .user-card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-card-info {
+            flex: 1;
+        }
+
+        .user-card-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .user-card-email {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        body.dark-mode .user-card-email {
+            color: #aaa;
+        }
+
+        .user-card-details {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .user-card-details div {
+            margin-bottom: 5px;
+        }
+
+        /* Mobile Sidebar Logout Button */
+        .mobile-logout {
+            display: none;
+            padding: 15px 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        body.dark-mode .mobile-logout {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-logout-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .login-card {
@@ -1462,7 +1571,7 @@
             }
             
             .login-title {
-                font-size: 28px;
+                fontSize: 28px;
             }
             
             .user-info {
@@ -1550,6 +1659,10 @@
                 font-size: 24px;
                 color: var(--primary);
                 cursor: pointer;
+            }
+
+            .mobile-logout {
+                display: block;
             }
 
             .video-container {
@@ -1650,6 +1763,10 @@
             .admin-stat-card {
                 min-width: 100%;
             }
+
+            .user-list {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (min-width: 769px) {
@@ -1689,11 +1806,6 @@
                 
                 <button type="submit" class="login-submit">Sign In</button>
             </form>
-            
-            <div class="login-links">
-                <a href="#" class="login-link" id="forgotPassword">Forgot Password?</a>
-                <a href="#" class="login-link" id="createAccount">Create Account</a>
-            </div>
             
             <div class="login-footer">
                 By signing in, you agree to our Terms of Service and Privacy Policy
@@ -1752,6 +1864,11 @@
                     <i class="fas fa-cog"></i>
                     <span>Admin Panel</span>
                 </div>
+            </div>
+            <div class="mobile-logout">
+                <button class="mobile-logout-btn" id="mobileLogoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
             </div>
         </div>
 
@@ -1902,6 +2019,7 @@
                         <div class="tournament-tab active" data-admin="regular">Regular Matches</div>
                         <div class="tournament-tab" data-admin="atoll">Atoll Management</div>
                         <div class="tournament-tab" data-admin="rounds">Round Management</div>
+                        <div class="tournament-tab" data-admin="users">User Management</div>
                     </div>
                     
                     <!-- Regular Match Form -->
@@ -2091,6 +2209,16 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- User Management -->
+                    <div class="tournament-section" id="users-admin">
+                        <h3>User Management</h3>
+                        <div class="user-management" id="userManagementList">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2120,9 +2248,8 @@
         const splashScreen = document.getElementById('splashScreen');
         const googleSignIn = document.getElementById('googleSignIn');
         const emailLoginForm = document.getElementById('emailLoginForm');
-        const forgotPassword = document.getElementById('forgotPassword');
-        const createAccount = document.getElementById('createAccount');
         const logoutBtn = document.getElementById('logoutBtn');
+        const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
         const userInfo = document.getElementById('userInfo');
         const userName = document.getElementById('userName');
         const userAvatar = document.getElementById('userAvatar');
@@ -2195,6 +2322,9 @@
         const matchRoundType = document.getElementById('matchRoundType');
         const matchRoundName = document.getElementById('matchRoundName');
 
+        // User Management
+        const userManagementList = document.getElementById('userManagementList');
+
         // Global variables
         let matches = [];
         let atollMatches = [];
@@ -2203,6 +2333,7 @@
         let islands = [];
         let atollRounds = [];
         let zoneRounds = [];
+        let users = [];
         let liveMatchesCount = 0;
         const MAX_LIVE_MATCHES = 2;
 
@@ -2222,6 +2353,7 @@
                     loadTournamentData();
                     loadAtollsAndIslands();
                     loadRounds();
+                    loadUsers();
                 } else {
                     // User is signed out
                     showLoginPage();
@@ -2240,14 +2372,9 @@
             // Email/Password Sign In
             emailLoginForm.addEventListener('submit', signInWithEmail);
             
-            // Forgot Password
-            forgotPassword.addEventListener('click', handleForgotPassword);
-            
-            // Create Account
-            createAccount.addEventListener('click', handleCreateAccount);
-            
             // Logout
             logoutBtn.addEventListener('click', signOut);
+            mobileLogoutBtn.addEventListener('click', signOut);
             
             // Theme toggle
             themeToggle.addEventListener('click', toggleTheme);
@@ -2423,6 +2550,9 @@
                 .then((result) => {
                     // User signed in successfully
                     console.log('Google sign-in successful', result.user);
+                    
+                    // Save user data to Firebase
+                    saveUserData(result.user);
                 })
                 .catch((error) => {
                     // Handle errors
@@ -2449,37 +2579,6 @@
                 });
         }
 
-        function handleForgotPassword(e) {
-            e.preventDefault();
-            const email = prompt('Please enter your email address to reset your password:');
-            
-            if (email) {
-                auth.sendPasswordResetEmail(email)
-                    .then(() => {
-                        alert('Password reset email sent! Check your inbox.');
-                    })
-                    .catch((error) => {
-                        alert('Error sending reset email: ' + error.message);
-                    });
-            }
-        }
-
-        function handleCreateAccount(e) {
-            e.preventDefault();
-            const email = prompt('Please enter your email address:');
-            const password = prompt('Please enter a password (at least 6 characters):');
-            
-            if (email && password) {
-                auth.createUserWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        alert('Account created successfully! You are now signed in.');
-                    })
-                    .catch((error) => {
-                        alert('Error creating account: ' + error.message);
-                    });
-            }
-        }
-
         function signOut() {
             auth.signOut()
                 .then(() => {
@@ -2490,6 +2589,26 @@
                     // Handle errors
                     console.error('Sign out error', error);
                     alert('Error signing out: ' + error.message);
+                });
+        }
+
+        // Save user data to Firebase
+        function saveUserData(user) {
+            const userData = {
+                uid: user.uid,
+                displayName: user.displayName,
+                email: user.email,
+                photoURL: user.photoURL,
+                lastSignIn: new Date().toISOString()
+            };
+            
+            // Save to Firebase
+            database.ref('users/' + user.uid).set(userData)
+                .then(() => {
+                    console.log('User data saved successfully');
+                })
+                .catch((error) => {
+                    console.error('Error saving user data:', error);
                 });
         }
 
@@ -2547,6 +2666,21 @@
                 
                 // Also update tournament matches from regular matches
                 updateTournamentMatches();
+            });
+        }
+
+        // Load users from Firebase
+        function loadUsers() {
+            database.ref('users').on('value', (snapshot) => {
+                users = [];
+                
+                snapshot.forEach((childSnapshot) => {
+                    const user = childSnapshot.val();
+                    user.id = childSnapshot.key;
+                    users.push(user);
+                });
+                
+                renderUserManagement();
             });
         }
 
@@ -3823,6 +3957,45 @@
             document.querySelectorAll('.delete-btn[data-type="atollRound"], .delete-btn[data-type="zoneRound"]').forEach(btn => {
                 btn.addEventListener('click', handleDelete);
             });
+        }
+
+        // Render User Management
+        function renderUserManagement() {
+            userManagementList.innerHTML = '';
+            
+            if (users.length === 0) {
+                userManagementList.innerHTML = '<p>No users found.</p>';
+                return;
+            }
+            
+            // Add users to management list
+            const userList = document.createElement('div');
+            userList.className = 'user-list';
+            
+            users.forEach(user => {
+                const userCard = document.createElement('div');
+                userCard.className = 'user-card';
+                
+                userCard.innerHTML = `
+                    <div class="user-card-header">
+                        <div class="user-card-avatar">
+                            <img src="${user.photoURL || 'https://via.placeholder.com/50'}" alt="${user.displayName || 'User'}" onerror="this.src='https://via.placeholder.com/50'">
+                        </div>
+                        <div class="user-card-info">
+                            <div class="user-card-name">${user.displayName || 'No Name'}</div>
+                            <div class="user-card-email">${user.email}</div>
+                        </div>
+                    </div>
+                    <div class="user-card-details">
+                        <div><strong>User ID:</strong> ${user.uid}</div>
+                        <div><strong>Last Sign In:</strong> ${new Date(user.lastSignIn).toLocaleString()}</div>
+                    </div>
+                `;
+                
+                userList.appendChild(userCard);
+            });
+            
+            userManagementList.appendChild(userList);
         }
 
         // Update match status
