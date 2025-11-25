@@ -241,6 +241,30 @@
             color: var(--primary);
         }
 
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: var(--card-light);
+            color: var(--text-light);
+            transition: var(--transition);
+            min-width: 200px;
+        }
+
+        body.dark-mode .filter-select {
+            background-color: var(--card-dark);
+            border-color: #444;
+            color: var(--text-dark);
+        }
+
         /* Matches Grid */
         .matches-grid {
             display: grid;
@@ -905,6 +929,279 @@
             gap: 10px;
         }
 
+        /* Round Buttons */
+        .round-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .round-btn {
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .round-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .round-btn.active {
+            background-color: var(--primary-dark);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);
+        }
+
+        body.dark-mode .round-btn.active {
+            box-shadow: 0 0 0 2px var(--bg-dark), 0 0 0 4px var(--primary);
+        }
+
+        /* Score Form */
+        .score-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .score-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        body.dark-mode .score-input {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: var(--text-dark);
+        }
+
+        /* Played Matches YouTube Player */
+        .played-youtube-player {
+            width: 100%;
+            height: 400px;
+            background-color: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Enhanced Admin Panel Styles */
+        .admin-match-list {
+            margin-top: 20px;
+        }
+
+        .admin-match-item {
+            background-color: var(--card-light);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .admin-match-item {
+            background-color: var(--card-dark);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-match-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .admin-match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .admin-match-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-match-teams {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .admin-team {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-team-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        body.dark-mode .admin-team-logo {
+            background-color: #2a2a2a;
+        }
+
+        .admin-match-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .admin-match-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .admin-match-status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .admin-status-upcoming {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .admin-status-live {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .admin-status-completed {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .admin-match-youtube {
+            margin-top: 10px;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .admin-match-youtube a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .admin-match-youtube a:hover {
+            text-decoration: underline;
+        }
+
+        .admin-search-filter {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: var(--card-light);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .admin-search-input {
+            background-color: var(--card-dark);
+            border-color: #444;
+            color: var(--text-dark);
+        }
+
+        .admin-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .admin-stat-card {
+            flex: 1;
+            min-width: 150px;
+            background-color: var(--card-light);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .admin-stat-card {
+            background-color: var(--card-dark);
+        }
+
+        .admin-stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .admin-stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .admin-stat-label {
+            color: var(--text-dark);
+        }
+
+        .admin-empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6c757d;
+        }
+
+        .admin-empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #dee2e6;
+        }
+
+        body.dark-mode .admin-empty-state i {
+            color: #495057;
+        }
+
+        /* Score Display */
+        .score-display {
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgba(225, 6, 0, 0.1);
+        }
+
+        body.dark-mode .score-display {
+            background-color: rgba(225, 6, 0, 0.2);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .container {
@@ -1038,6 +1335,56 @@
             .island-list {
                 grid-template-columns: 1fr;
             }
+
+            .round-buttons {
+                flex-direction: column;
+            }
+
+            .score-form {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+            }
+            
+            .filter-select {
+                width: 100%;
+            }
+
+            /* Admin responsive */
+            .admin-match-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .admin-match-teams {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .admin-match-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .admin-search-filter {
+                flex-direction: column;
+            }
+
+            .admin-search-input {
+                min-width: 100%;
+            }
+
+            .admin-stats {
+                flex-direction: column;
+            }
+
+            .admin-stat-card {
+                min-width: 100%;
+            }
         }
 
         @media (min-width: 769px) {
@@ -1087,13 +1434,13 @@
                     <i class="fas fa-broadcast-tower"></i>
                     <span>Live Matches</span>
                 </div>
-                <div class="menu-item" data-target="matches">
-                    <i class="fas fa-trophy"></i>
-                    <span>Recent Matches</span>
+                <div class="menu-item" data-target="played">
+                    <i class="fas fa-history"></i>
+                    <span>Played Matches</span>
                 </div>
                 <div class="menu-item" data-target="tournament">
                     <i class="fas fa-list-ol"></i>
-                    <span>Matches Schedule</span>
+                    <span>Tournament Schedule</span>
                 </div>
                 <div class="menu-item" data-target="admin">
                     <i class="fas fa-cog"></i>
@@ -1117,6 +1464,14 @@
             <!-- Upcoming Section -->
             <div class="content-section active" id="upcoming">
                 <h2 class="section-title">Upcoming Matches</h2>
+                <div class="filter-controls">
+                    <select class="filter-select" id="upcomingAtollFilter">
+                        <option value="">All Atolls</option>
+                    </select>
+                    <select class="filter-select" id="upcomingRoundFilter">
+                        <option value="">All Rounds</option>
+                    </select>
+                </div>
                 <div class="matches-grid" id="upcomingMatchesGrid">
                     <div class="loading">
                         <div class="spinner"></div>
@@ -1127,6 +1482,14 @@
             <!-- Live Matches Section -->
             <div class="content-section" id="live">
                 <h2 class="section-title">Live Matches</h2>
+                <div class="filter-controls">
+                    <select class="filter-select" id="liveAtollFilter">
+                        <option value="">All Atolls</option>
+                    </select>
+                    <select class="filter-select" id="liveRoundFilter">
+                        <option value="">All Rounds</option>
+                    </select>
+                </div>
                 <div class="youtube-player" id="youtubePlayer">
                     <button class="close-video" id="closeVideo">
                         <i class="fas fa-times"></i>
@@ -1142,10 +1505,26 @@
                 </div>
             </div>
 
-            <!-- Recent Matches Section -->
-            <div class="content-section" id="matches">
-                <h2 class="section-title">Recent Matches</h2>
-                <div class="matches-grid" id="matchesGrid">
+            <!-- Played Matches Section -->
+            <div class="content-section" id="played">
+                <h2 class="section-title">Played Matches</h2>
+                <div class="filter-controls">
+                    <select class="filter-select" id="playedAtollFilter">
+                        <option value="">All Atolls</option>
+                    </select>
+                    <select class="filter-select" id="playedRoundFilter">
+                        <option value="">All Rounds</option>
+                    </select>
+                </div>
+                <div class="played-youtube-player" id="playedYoutubePlayer">
+                    <button class="close-video" id="closePlayedVideo">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="youtube-placeholder">
+                        Select a match to watch replay
+                    </div>
+                </div>
+                <div class="matches-grid" id="playedMatchesGrid">
                     <div class="loading">
                         <div class="spinner"></div>
                     </div>
@@ -1162,6 +1541,14 @@
                 
                 <div class="tournament-section active" id="atoll-round">
                     <h3>Atoll Round Matches</h3>
+                    <div class="filter-controls">
+                        <select class="filter-select" id="atollRoundFilter">
+                            <option value="">All Atolls</option>
+                        </select>
+                    </div>
+                    <div class="round-buttons" id="atollRoundButtons">
+                        <!-- Dynamic buttons will be added here -->
+                    </div>
                     <div class="matches-grid" id="atollMatchesGrid">
                         <div class="loading">
                             <div class="spinner"></div>
@@ -1171,6 +1558,14 @@
                 
                 <div class="tournament-section" id="zone-round">
                     <h3>Zone Round Matches</h3>
+                    <div class="filter-controls">
+                        <select class="filter-select" id="zoneRoundFilter">
+                            <option value="">All Atolls</option>
+                        </select>
+                    </div>
+                    <div class="round-buttons" id="zoneRoundButtons">
+                        <!-- Dynamic buttons will be added here -->
+                    </div>
                     <div class="matches-grid" id="zoneMatchesGrid">
                         <div class="loading">
                             <div class="spinner"></div>
@@ -1190,6 +1585,7 @@
                     <div class="tournament-tabs">
                         <div class="tournament-tab active" data-admin="regular">Regular Matches</div>
                         <div class="tournament-tab" data-admin="atoll">Atoll Management</div>
+                        <div class="tournament-tab" data-admin="rounds">Round Management</div>
                     </div>
                     
                     <!-- Regular Match Form -->
@@ -1202,6 +1598,20 @@
                                     <option value="upcoming">Upcoming</option>
                                     <option value="live">Live</option>
                                     <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="matchRoundType">Match Round Type</label>
+                                <select id="matchRoundType">
+                                    <option value="">-- Select Round Type --</option>
+                                    <option value="atoll">Atoll Round</option>
+                                    <option value="zone">Zone Round</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="matchRoundName">Round Name</label>
+                                <select id="matchRoundName">
+                                    <option value="">-- Select Round --</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -1222,7 +1632,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="youtubeLink">YouTube Video URL</label>
-                                <input type="url" id="youtubeLink" placeholder="https://www.youtube.com/watch?v=..." required>
+                                <input type="url" id="youtubeLink" placeholder="https://www.youtube.com/watch?v=...">
                                 <small>For live matches and replays</small>
                             </div>
                             <div class="form-actions">
@@ -1232,8 +1642,47 @@
                         </form>
 
                         <div class="admin-list">
-                            <h3>Manage Matches</h3>
-                            <div id="adminContentList">
+                            <h3>Manage All Matches</h3>
+                            
+                            <!-- Stats Cards -->
+                            <div class="admin-stats" id="adminStats">
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-value" id="totalMatches">0</div>
+                                    <div class="admin-stat-label">Total Matches</div>
+                                </div>
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-value" id="upcomingMatches">0</div>
+                                    <div class="admin-stat-label">Upcoming</div>
+                                </div>
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-value" id="liveMatches">0</div>
+                                    <div class="admin-stat-label">Live</div>
+                                </div>
+                                <div class="admin-stat-card">
+                                    <div class="admin-stat-value" id="completedMatches">0</div>
+                                    <div class="admin-stat-label">Completed</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Search and Filter -->
+                            <div class="admin-search-filter">
+                                <input type="text" class="admin-search-input" id="adminSearch" placeholder="Search matches by team name...">
+                                <select class="filter-select" id="adminStatusFilter">
+                                    <option value="">All Status</option>
+                                    <option value="upcoming">Upcoming</option>
+                                    <option value="live">Live</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                                <select class="filter-select" id="adminAtollFilter">
+                                    <option value="">All Atolls</option>
+                                </select>
+                                <select class="filter-select" id="adminRoundFilter">
+                                    <option value="">All Rounds</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Matches List -->
+                            <div class="admin-match-list" id="adminContentList">
                                 <div class="loading">
                                     <div class="spinner"></div>
                                 </div>
@@ -1288,6 +1737,44 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Round Management -->
+                    <div class="tournament-section" id="rounds-admin">
+                        <h3>Round Management</h3>
+                        
+                        <div class="tournament-form">
+                            <h4>Add Atoll Round</h4>
+                            <form class="admin-form" id="atollRoundForm">
+                                <div class="form-group">
+                                    <label for="atollRoundName">Atoll Round Name</label>
+                                    <input type="text" id="atollRoundName" placeholder="e.g., HA Atoll Round" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Add Atoll Round</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="tournament-form">
+                            <h4>Add Zone Round</h4>
+                            <form class="admin-form" id="zoneRoundForm">
+                                <div class="form-group">
+                                    <label for="zoneRoundName">Zone Round Name</label>
+                                    <input type="text" id="zoneRoundName" placeholder="e.g., Zone Round 1" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Add Zone Round</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="tournament-list" id="roundManagementList">
+                            <h3>Round Management</h3>
+                            <div class="loading">
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1317,20 +1804,32 @@
         const contentSections = document.querySelectorAll('.content-section');
         const matchesGridUpcoming = document.getElementById('upcomingMatchesGrid');
         const matchesGridLive = document.getElementById('liveMatchesGrid');
-        const matchesGridMatches = document.getElementById('matchesGrid');
+        const matchesGridPlayed = document.getElementById('playedMatchesGrid');
         const atollMatchesGrid = document.getElementById('atollMatchesGrid');
         const zoneMatchesGrid = document.getElementById('zoneMatchesGrid');
         const youtubePlayer = document.getElementById('youtubePlayer');
+        const playedYoutubePlayer = document.getElementById('playedYoutubePlayer');
         const matchForm = document.getElementById('matchForm');
         const adminContentList = document.getElementById('adminContentList');
         const toggleSidebar = document.getElementById('toggleSidebar');
         const sidebar = document.getElementById('sidebar');
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const closeVideo = document.getElementById('closeVideo');
+        const closePlayedVideo = document.getElementById('closePlayedVideo');
         const videoOverlay = document.getElementById('videoOverlay');
         const closeOverlay = document.getElementById('closeOverlay');
         const videoPlayer = document.getElementById('videoPlayer');
         const liveMatchAlert = document.getElementById('liveMatchAlert');
+        
+        // Filter elements
+        const upcomingAtollFilter = document.getElementById('upcomingAtollFilter');
+        const upcomingRoundFilter = document.getElementById('upcomingRoundFilter');
+        const liveAtollFilter = document.getElementById('liveAtollFilter');
+        const liveRoundFilter = document.getElementById('liveRoundFilter');
+        const playedAtollFilter = document.getElementById('playedAtollFilter');
+        const playedRoundFilter = document.getElementById('playedRoundFilter');
+        const atollRoundFilter = document.getElementById('atollRoundFilter');
+        const zoneRoundFilter = document.getElementById('zoneRoundFilter');
         
         // Tournament tabs
         const tournamentTabs = document.querySelectorAll('.tournament-tab');
@@ -1346,6 +1845,28 @@
         const team1Select = document.getElementById('team1');
         const team2Select = document.getElementById('team2');
         const atollManagementList = document.getElementById('atollManagementList');
+        
+        // Round management elements
+        const atollRoundButtons = document.getElementById('atollRoundButtons');
+        const zoneRoundButtons = document.getElementById('zoneRoundButtons');
+        const atollRoundForm = document.getElementById('atollRoundForm');
+        const zoneRoundForm = document.getElementById('zoneRoundForm');
+        const roundManagementList = document.getElementById('roundManagementList');
+
+        // Enhanced Admin Panel Elements
+        const adminSearch = document.getElementById('adminSearch');
+        const adminStatusFilter = document.getElementById('adminStatusFilter');
+        const adminAtollFilter = document.getElementById('adminAtollFilter');
+        const adminRoundFilter = document.getElementById('adminRoundFilter');
+        const adminStats = document.getElementById('adminStats');
+        const totalMatches = document.getElementById('totalMatches');
+        const upcomingMatches = document.getElementById('upcomingMatches');
+        const liveMatches = document.getElementById('liveMatches');
+        const completedMatches = document.getElementById('completedMatches');
+
+        // New form elements for regular matches
+        const matchRoundType = document.getElementById('matchRoundType');
+        const matchRoundName = document.getElementById('matchRoundName');
 
         // Global variables
         let matches = [];
@@ -1353,6 +1874,8 @@
         let zoneMatches = [];
         let atolls = [];
         let islands = [];
+        let atollRounds = [];
+        let zoneRounds = [];
         let liveMatchesCount = 0;
         const MAX_LIVE_MATCHES = 2;
 
@@ -1367,6 +1890,7 @@
             loadMatches();
             loadTournamentData();
             loadAtollsAndIslands();
+            loadRounds();
 
             // Set up event listeners
             setupEventListeners();
@@ -1431,6 +1955,11 @@
             matchForm.addEventListener('submit', handleMatchSubmit);
             atollForm.addEventListener('submit', handleAtollSubmit);
             islandForm.addEventListener('submit', handleIslandSubmit);
+            atollRoundForm.addEventListener('submit', handleAtollRoundSubmit);
+            zoneRoundForm.addEventListener('submit', handleZoneRoundSubmit);
+            
+            // Round type change
+            matchRoundType.addEventListener('change', updateMatchRoundNameDropdown);
             
             // Sidebar toggle
             toggleSidebar.addEventListener('click', function() {
@@ -1474,6 +2003,29 @@
                 });
             });
 
+            closePlayedVideo.addEventListener('click', function() {
+                playedYoutubePlayer.innerHTML = `
+                    <button class="close-video" id="closePlayedVideo">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="youtube-placeholder">
+                        Select a match to watch replay
+                    </div>
+                `;
+                // Reattach event listener to the new close button
+                document.getElementById('closePlayedVideo').addEventListener('click', function() {
+                    playedYoutubePlayer.innerHTML = `
+                        <button class="close-video" id="closePlayedVideo">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="youtube-placeholder">
+                            Select a match to watch replay
+                        </div>
+                    `;
+                    document.getElementById('closePlayedVideo').addEventListener('click', arguments.callee);
+                });
+            });
+
             closeOverlay.addEventListener('click', function() {
                 videoOverlay.classList.remove('active');
                 videoPlayer.innerHTML = '';
@@ -1494,6 +2046,22 @@
                     videoPlayer.innerHTML = '';
                 }
             });
+            
+            // Filter change events
+            upcomingAtollFilter.addEventListener('change', () => renderMatches());
+            upcomingRoundFilter.addEventListener('change', () => renderMatches());
+            liveAtollFilter.addEventListener('change', () => renderMatches());
+            liveRoundFilter.addEventListener('change', () => renderMatches());
+            playedAtollFilter.addEventListener('change', () => renderMatches());
+            playedRoundFilter.addEventListener('change', () => renderMatches());
+            atollRoundFilter.addEventListener('change', () => renderAtollMatches());
+            zoneRoundFilter.addEventListener('change', () => renderZoneMatches());
+            
+            // Enhanced Admin Panel Events
+            adminSearch.addEventListener('input', () => renderAdminContent());
+            adminStatusFilter.addEventListener('change', () => renderAdminContent());
+            adminAtollFilter.addEventListener('change', () => renderAdminContent());
+            adminRoundFilter.addEventListener('change', () => renderAdminContent());
         }
 
         // Toggle Theme
@@ -1530,17 +2098,56 @@
                 renderMatches();
                 renderAdminContent();
                 updateLiveMatchAlert();
+                updateAdminStats();
+                updateRoundFilters();
+                
+                // Also update tournament matches from regular matches
+                updateTournamentMatches();
             });
+        }
+
+        // Update tournament matches from regular matches
+        function updateTournamentMatches() {
+            // Clear existing tournament matches
+            atollMatches = [];
+            zoneMatches = [];
+            
+            // Filter matches with round information
+            matches.forEach(match => {
+                if (match.roundType && match.roundId) {
+                    const tournamentMatch = {
+                        id: match.id,
+                        roundId: match.roundId,
+                        roundName: match.roundName,
+                        team1Id: match.team1,
+                        team2Id: match.team2,
+                        date: match.date,
+                        youtubeLink: match.youtubeLink,
+                        status: match.status,
+                        score1: match.score1,
+                        score2: match.score2
+                    };
+                    
+                    if (match.roundType === 'atoll') {
+                        atollMatches.push(tournamentMatch);
+                    } else if (match.roundType === 'zone') {
+                        zoneMatches.push(tournamentMatch);
+                    }
+                }
+            });
+            
+            renderAtollMatches();
+            renderZoneMatches();
         }
 
         // Load tournament data from Firebase
         function loadTournamentData() {
             // Load atoll matches
             database.ref('atollMatches').on('value', (snapshot) => {
-                atollMatches = [];
                 snapshot.forEach((childSnapshot) => {
                     const match = childSnapshot.val();
                     match.id = childSnapshot.key;
+                    match.roundType = 'atoll';
                     atollMatches.push(match);
                 });
                 renderAtollMatches();
@@ -1548,10 +2155,10 @@
             
             // Load zone matches
             database.ref('zoneMatches').on('value', (snapshot) => {
-                zoneMatches = [];
                 snapshot.forEach((childSnapshot) => {
                     const match = childSnapshot.val();
                     match.id = childSnapshot.key;
+                    match.roundType = 'zone';
                     zoneMatches.push(match);
                 });
                 renderZoneMatches();
@@ -1569,6 +2176,7 @@
                     atolls.push(atoll);
                 });
                 updateAtollDropdowns();
+                updateAtollFilters();
                 renderAtollManagement();
             });
             
@@ -1585,12 +2193,68 @@
             });
         }
 
+        // Load rounds from Firebase
+        function loadRounds() {
+            // Load atoll rounds
+            database.ref('atollRounds').on('value', (snapshot) => {
+                atollRounds = [];
+                snapshot.forEach((childSnapshot) => {
+                    const round = childSnapshot.val();
+                    round.id = childSnapshot.key;
+                    round.type = 'atoll';
+                    atollRounds.push(round);
+                });
+                renderAtollRoundButtons();
+                updateMatchRoundNameDropdown();
+                renderRoundManagement();
+            });
+            
+            // Load zone rounds
+            database.ref('zoneRounds').on('value', (snapshot) => {
+                zoneRounds = [];
+                snapshot.forEach((childSnapshot) => {
+                    const round = childSnapshot.val();
+                    round.id = childSnapshot.key;
+                    round.type = 'zone';
+                    zoneRounds.push(round);
+                });
+                renderZoneRoundButtons();
+                updateMatchRoundNameDropdown();
+                renderRoundManagement();
+            });
+        }
+
         // Update dropdowns with atoll data
         function updateAtollDropdowns() {
             atollSelect.innerHTML = '<option value="">-- Select Atoll --</option>';
+            adminAtollFilter.innerHTML = '<option value="">All Atolls</option>';
+            
             atolls.forEach(atoll => {
                 atollSelect.innerHTML += `<option value="${atoll.id}">${atoll.name}</option>`;
+                adminAtollFilter.innerHTML += `<option value="${atoll.id}">${atoll.name}</option>`;
             });
+        }
+
+        // Update atoll filters
+        function updateAtollFilters() {
+            const filterOptions = atolls.map(atoll => `<option value="${atoll.id}">${atoll.name}</option>`).join('');
+            
+            upcomingAtollFilter.innerHTML = '<option value="">All Atolls</option>' + filterOptions;
+            liveAtollFilter.innerHTML = '<option value="">All Atolls</option>' + filterOptions;
+            playedAtollFilter.innerHTML = '<option value="">All Atolls</option>' + filterOptions;
+            atollRoundFilter.innerHTML = '<option value="">All Atolls</option>' + filterOptions;
+            zoneRoundFilter.innerHTML = '<option value="">All Atolls</option>' + filterOptions;
+        }
+
+        // Update round filters
+        function updateRoundFilters() {
+            const allRounds = [...atollRounds, ...zoneRounds];
+            const roundOptions = allRounds.map(round => `<option value="${round.id}">${round.name}</option>`).join('');
+            
+            upcomingRoundFilter.innerHTML = '<option value="">All Rounds</option>' + roundOptions;
+            liveRoundFilter.innerHTML = '<option value="">All Rounds</option>' + roundOptions;
+            playedRoundFilter.innerHTML = '<option value="">All Rounds</option>' + roundOptions;
+            adminRoundFilter.innerHTML = '<option value="">All Rounds</option>' + roundOptions;
         }
 
         // Update dropdowns with team data
@@ -1604,6 +2268,22 @@
             });
         }
 
+        // Update match round name dropdown based on selected round type
+        function updateMatchRoundNameDropdown() {
+            matchRoundName.innerHTML = '<option value="">-- Select Round --</option>';
+            
+            const roundType = matchRoundType.value;
+            if (roundType === 'atoll') {
+                atollRounds.forEach(round => {
+                    matchRoundName.innerHTML += `<option value="${round.id}">${round.name}</option>`;
+                });
+            } else if (roundType === 'zone') {
+                zoneRounds.forEach(round => {
+                    matchRoundName.innerHTML += `<option value="${round.id}">${round.name}</option>`;
+                });
+            }
+        }
+
         // Update live match alert visibility
         function updateLiveMatchAlert() {
             if (liveMatchesCount >= MAX_LIVE_MATCHES) {
@@ -1613,18 +2293,53 @@
             }
         }
 
+        // Update admin stats
+        function updateAdminStats() {
+            const total = matches.length;
+            const upcoming = matches.filter(match => match.status === 'upcoming').length;
+            const live = matches.filter(match => match.status === 'live').length;
+            const completed = matches.filter(match => match.status === 'completed').length;
+            
+            totalMatches.textContent = total;
+            upcomingMatches.textContent = upcoming;
+            liveMatches.textContent = live;
+            completedMatches.textContent = completed;
+        }
+
         // Render Matches
         function renderMatches() {
             // Clear existing content
             matchesGridUpcoming.innerHTML = '';
             matchesGridLive.innerHTML = '';
-            matchesGridMatches.innerHTML = '';
+            matchesGridPlayed.innerHTML = '';
 
             // Sort matches by date
             matches.sort((a, b) => new Date(a.date) - new Date(b.date));
             
-            // Add matches to appropriate sections
+            // Get filter values
+            const upcomingFilter = upcomingAtollFilter.value;
+            const upcomingRound = upcomingRoundFilter.value;
+            const liveFilter = liveAtollFilter.value;
+            const liveRound = liveRoundFilter.value;
+            const playedFilter = playedAtollFilter.value;
+            const playedRound = playedRoundFilter.value;
+            
+            // Filter and add matches to appropriate sections
             matches.forEach(match => {
+                // Check if match passes the filter
+                if (match.status === 'upcoming') {
+                    if (upcomingFilter && !isMatchInAtoll(match, upcomingFilter)) return;
+                    if (upcomingRound && match.roundId !== upcomingRound) return;
+                }
+                if (match.status === 'live') {
+                    if (liveFilter && !isMatchInAtoll(match, liveFilter)) return;
+                    if (liveRound && match.roundId !== liveRound) return;
+                }
+                if (match.status === 'completed') {
+                    if (playedFilter && !isMatchInAtoll(match, playedFilter)) return;
+                    if (playedRound && match.roundId !== playedRound) return;
+                }
+                
                 const matchCard = createMatchCard(match);
                 
                 // Add to appropriate section based on status
@@ -1632,8 +2347,8 @@
                     matchesGridUpcoming.appendChild(matchCard);
                 } else if (match.status === 'live') {
                     matchesGridLive.appendChild(matchCard);
-                } else {
-                    matchesGridMatches.appendChild(matchCard);
+                } else if (match.status === 'completed') {
+                    matchesGridPlayed.appendChild(matchCard);
                 }
             });
             
@@ -1646,75 +2361,155 @@
                 matchesGridLive.innerHTML = '<p>No live matches at the moment.</p>';
             }
             
-            if (matchesGridMatches.children.length === 0) {
-                matchesGridMatches.innerHTML = '<p>No recent matches available.</p>';
+            if (matchesGridPlayed.children.length === 0) {
+                matchesGridPlayed.innerHTML = '<p>No played matches available.</p>';
+            }
+        }
+
+        // Check if a match is in a specific atoll
+        function isMatchInAtoll(match, atollId) {
+            const team1 = islands.find(island => island.id === match.team1);
+            const team2 = islands.find(island => island.id === match.team2);
+            
+            if (!team1 || !team2) return false;
+            
+            return team1.atollId === atollId || team2.atollId === atollId;
+        }
+
+        // Render Atoll Round Buttons
+        function renderAtollRoundButtons() {
+            atollRoundButtons.innerHTML = '';
+            
+            if (atollRounds.length === 0) {
+                atollRoundButtons.innerHTML = '<p>No atoll rounds added yet.</p>';
+                return;
+            }
+            
+            atollRounds.forEach(round => {
+                const button = document.createElement('button');
+                button.className = 'round-btn';
+                button.textContent = round.name;
+                button.setAttribute('data-round-id', round.id);
+                button.setAttribute('data-round-type', 'atoll');
+                
+                button.addEventListener('click', function() {
+                    // Set active button
+                    document.querySelectorAll('.round-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter matches for this round
+                    renderAtollMatches(round.id);
+                });
+                
+                atollRoundButtons.appendChild(button);
+            });
+            
+            // Activate first button by default
+            if (atollRoundButtons.firstChild) {
+                atollRoundButtons.firstChild.classList.add('active');
+                renderAtollMatches(atollRounds[0].id);
+            }
+        }
+
+        // Render Zone Round Buttons
+        function renderZoneRoundButtons() {
+            zoneRoundButtons.innerHTML = '';
+            
+            if (zoneRounds.length === 0) {
+                zoneRoundButtons.innerHTML = '<p>No zone rounds added yet.</p>';
+                return;
+            }
+            
+            zoneRounds.forEach(round => {
+                const button = document.createElement('button');
+                button.className = 'round-btn';
+                button.textContent = round.name;
+                button.setAttribute('data-round-id', round.id);
+                button.setAttribute('data-round-type', 'zone');
+                
+                button.addEventListener('click', function() {
+                    // Set active button
+                    document.querySelectorAll('.round-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter matches for this round
+                    renderZoneMatches(round.id);
+                });
+                
+                zoneRoundButtons.appendChild(button);
+            });
+            
+            // Activate first button by default
+            if (zoneRoundButtons.firstChild) {
+                zoneRoundButtons.firstChild.classList.add('active');
+                renderZoneMatches(zoneRounds[0].id);
             }
         }
 
         // Render Atoll Matches
-        function renderAtollMatches() {
+        function renderAtollMatches(roundId = null) {
             atollMatchesGrid.innerHTML = '';
             
-            if (atollMatches.length === 0) {
-                atollMatchesGrid.innerHTML = '<p>No atoll round matches scheduled.</p>';
+            let filteredMatches = atollMatches;
+            if (roundId) {
+                filteredMatches = atollMatches.filter(match => match.roundId === roundId);
+            }
+            
+            // Apply atoll filter
+            const atollFilter = atollRoundFilter.value;
+            if (atollFilter) {
+                filteredMatches = filteredMatches.filter(match => {
+                    const team1 = islands.find(t => t.id === match.team1Id);
+                    const team2 = islands.find(t => t.id === match.team2Id);
+                    
+                    if (!team1 || !team2) return false;
+                    
+                    return team1.atollId === atollFilter || team2.atollId === atollFilter;
+                });
+            }
+            
+            if (filteredMatches.length === 0) {
+                atollMatchesGrid.innerHTML = '<p>No matches scheduled for this round.</p>';
                 return;
             }
             
-            // Group matches by round
-            const rounds = {};
-            atollMatches.forEach(match => {
-                if (!rounds[match.round]) {
-                    rounds[match.round] = [];
-                }
-                rounds[match.round].push(match);
+            filteredMatches.forEach(match => {
+                const matchCard = createTournamentMatchCard(match, 'atoll');
+                atollMatchesGrid.appendChild(matchCard);
             });
-            
-            // Create match cards for each round
-            for (const round in rounds) {
-                const roundDiv = document.createElement('div');
-                roundDiv.className = 'tournament-round';
-                roundDiv.innerHTML = `<div class="round-title">${round}</div>`;
-                
-                rounds[round].forEach(match => {
-                    const matchCard = createTournamentMatchCard(match, 'atoll');
-                    roundDiv.appendChild(matchCard);
-                });
-                
-                atollMatchesGrid.appendChild(roundDiv);
-            }
         }
 
         // Render Zone Matches
-        function renderZoneMatches() {
+        function renderZoneMatches(roundId = null) {
             zoneMatchesGrid.innerHTML = '';
             
-            if (zoneMatches.length === 0) {
-                zoneMatchesGrid.innerHTML = '<p>No zone round matches scheduled.</p>';
+            let filteredMatches = zoneMatches;
+            if (roundId) {
+                filteredMatches = zoneMatches.filter(match => match.roundId === roundId);
+            }
+            
+            // Apply atoll filter
+            const atollFilter = zoneRoundFilter.value;
+            if (atollFilter) {
+                filteredMatches = filteredMatches.filter(match => {
+                    const team1 = islands.find(t => t.id === match.team1Id);
+                    const team2 = islands.find(t => t.id === match.team2Id);
+                    
+                    if (!team1 || !team2) return false;
+                    
+                    return team1.atollId === atollFilter || team2.atollId === atollFilter;
+                });
+            }
+            
+            if (filteredMatches.length === 0) {
+                zoneMatchesGrid.innerHTML = '<p>No matches scheduled for this round.</p>';
                 return;
             }
             
-            // Group matches by round
-            const rounds = {};
-            zoneMatches.forEach(match => {
-                if (!rounds[match.round]) {
-                    rounds[match.round] = [];
-                }
-                rounds[match.round].push(match);
+            filteredMatches.forEach(match => {
+                const matchCard = createTournamentMatchCard(match, 'zone');
+                zoneMatchesGrid.appendChild(matchCard);
             });
-            
-            // Create match cards for each round
-            for (const round in rounds) {
-                const roundDiv = document.createElement('div');
-                roundDiv.className = 'tournament-round';
-                roundDiv.innerHTML = `<div class="round-title">${round}</div>`;
-                
-                rounds[round].forEach(match => {
-                    const matchCard = createTournamentMatchCard(match, 'zone');
-                    roundDiv.appendChild(matchCard);
-                });
-                
-                zoneMatchesGrid.appendChild(roundDiv);
-            }
         }
 
         // Create Match Card
@@ -1747,14 +2542,33 @@
                 statusText = `<span class="live-indicator"></span>Live Match`;
                 statusClass = 'status-live';
             } else {
-                statusText = 'Recent Match';
+                statusText = 'Played Match';
                 statusClass = 'status-completed';
+            }
+            
+            // Get round information
+            let roundInfo = '';
+            if (match.roundType && match.roundName) {
+                roundInfo = `<div class="match-round" style="padding: 5px 15px; background-color: rgba(225, 6, 0, 0.1); font-size: 14px;">
+                    ${match.roundType === 'atoll' ? 'Atoll Round' : 'Zone Round'}: ${match.roundName}
+                </div>`;
+            }
+            
+            // Add score display for completed matches
+            let scoreDisplay = '';
+            if (match.status === 'completed' && match.score1 !== undefined && match.score2 !== undefined) {
+                scoreDisplay = `
+                    <div class="score-display">
+                        ${match.score1} - ${match.score2}
+                    </div>
+                `;
             }
             
             card.innerHTML = `
                 <div class="match-header">
                     ${statusText} <span class="match-status ${statusClass}">${match.status}</span>
                 </div>
+                ${roundInfo}
                 <div class="match-teams">
                     <div class="team">
                         <div class="team-logo">
@@ -1776,18 +2590,19 @@
                         <span>${team2.name}</span>
                     </div>
                 </div>
+                ${scoreDisplay}
                 <div class="match-time">
                     ${matchDate.toLocaleDateString()} at ${matchDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                 </div>
                 <div class="match-info">
                     <div class="match-actions">
                         ${match.status === 'live' && match.youtubeLink ? 
-                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}">
+                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}" data-section="live">
                                 Watch Live
                             </button>` : ''
                         }
                         ${match.status === 'completed' && match.youtubeLink ? 
-                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}">
+                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}" data-section="played">
                                 Watch Replay
                             </button>` : ''
                         }
@@ -1799,9 +2614,16 @@
             const watchBtn = card.querySelector('.watch-btn');
             if (watchBtn) {
                 watchBtn.addEventListener('click', function() {
-                    if (match.youtubeLink) {
-                        // Load YouTube video directly in the app screen with autoplay
-                        loadYouTubeVideo(match.youtubeLink, false, true);
+                    const link = this.getAttribute('data-link');
+                    const section = this.getAttribute('data-section');
+                    
+                    if (link) {
+                        // Load YouTube video in the appropriate section
+                        if (section === 'live') {
+                            loadYouTubeVideo(link, false, true, 'live');
+                        } else if (section === 'played') {
+                            loadYouTubeVideo(link, false, true, 'played');
+                        }
                     }
                 });
             }
@@ -1812,21 +2634,27 @@
         // Create Tournament Match Card
         function createTournamentMatchCard(match, type) {
             const matchDate = new Date(match.date);
-            const team1 = type === 'atoll' 
-                ? islands.find(t => t.id === match.team1Id) 
-                : islands.find(t => t.id === match.team1Id);
-            const team2 = type === 'atoll' 
-                ? islands.find(t => t.id === match.team2Id) 
-                : islands.find(t => t.id === match.team2Id);
+            const team1 = islands.find(t => t.id === match.team1Id);
+            const team2 = islands.find(t => t.id === match.team2Id);
             
             if (!team1 || !team2) return document.createElement('div'); // Skip if teams not found
             
             const card = document.createElement('div');
             card.className = 'match-card';
             
+            // Add score display for completed matches
+            let scoreDisplay = '';
+            if (match.status === 'completed' && match.score1 !== undefined && match.score2 !== undefined) {
+                scoreDisplay = `
+                    <div class="score-display">
+                        ${match.score1} - ${match.score2}
+                    </div>
+                `;
+            }
+            
             card.innerHTML = `
                 <div class="match-header">
-                    ${match.round}
+                    ${match.roundName || match.roundId}
                 </div>
                 <div class="match-teams">
                     <div class="team">
@@ -1849,18 +2677,14 @@
                         <span>${team2.name}</span>
                     </div>
                 </div>
+                ${scoreDisplay}
                 <div class="match-time">
                     ${matchDate.toLocaleDateString()} at ${matchDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                 </div>
-                ${match.score1 !== undefined && match.score2 !== undefined ? `
-                    <div class="match-score" style="text-align: center; padding: 10px; font-weight: bold;">
-                        ${match.score1} - ${match.score2}
-                    </div>
-                ` : ''}
                 <div class="match-info">
                     <div class="match-actions">
                         ${match.youtubeLink ? 
-                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}">
+                            `<button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}" data-section="tournament">
                                 Watch
                             </button>` : ''
                         }
@@ -1872,9 +2696,10 @@
             const watchBtn = card.querySelector('.watch-btn');
             if (watchBtn) {
                 watchBtn.addEventListener('click', function() {
-                    if (match.youtubeLink) {
-                        loadYouTubeVideo(match.youtubeLink, false, true);
-                    }
+                    const link = this.getAttribute('data-link');
+                    if (link) {
+                        loadYouTubeVideo(link, false, true, 'tournament');
+                        }
                 });
             }
             
@@ -1882,7 +2707,7 @@
         }
 
         // Load YouTube Video
-        function loadYouTubeVideo(link, useOverlay = false, autoplay = true) {
+        function loadYouTubeVideo(link, useOverlay = false, autoplay = true, section = 'live') {
             // Extract video ID from various YouTube URL formats
             let videoId = '';
             if (link.includes('youtube.com/embed/')) {
@@ -1914,55 +2739,117 @@
                     `;
                     videoOverlay.classList.add('active');
                 } else {
-                    // Use inline player in matches section - directly in the app
-                    youtubePlayer.innerHTML = `
-                        <button class="close-video" id="closeVideo">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <iframe 
-                            width="100%" 
-                            height="100%" 
-                            src="https://www.youtube.com/embed/${videoId}${autoplayParam}" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    `;
-                    
-                    // Reattach event listener to the new close button
-                    document.getElementById('closeVideo').addEventListener('click', function() {
+                    // Use inline player in the appropriate section
+                    if (section === 'live') {
                         youtubePlayer.innerHTML = `
                             <button class="close-video" id="closeVideo">
                                 <i class="fas fa-times"></i>
                             </button>
-                            <div class="youtube-placeholder">
-                                Select a live match to watch
-                            </div>
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/${videoId}${autoplayParam}" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         `;
-                        document.getElementById('closeVideo').addEventListener('click', arguments.callee);
-                    });
+                        
+                        // Reattach event listener to the new close button
+                        document.getElementById('closeVideo').addEventListener('click', function() {
+                            youtubePlayer.innerHTML = `
+                                <button class="close-video" id="closeVideo">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="youtube-placeholder">
+                                    Select a live match to watch
+                                </div>
+                            `;
+                            document.getElementById('closeVideo').addEventListener('click', arguments.callee);
+                        });
+                    } else if (section === 'played') {
+                        playedYoutubePlayer.innerHTML = `
+                            <button class="close-video" id="closePlayedVideo">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/${videoId}${autoplayParam}" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        `;
+                        
+                        // Reattach event listener to the new close button
+                        document.getElementById('closePlayedVideo').addEventListener('click', function() {
+                            playedYoutubePlayer.innerHTML = `
+                                <button class="close-video" id="closePlayedVideo">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="youtube-placeholder">
+                                    Select a match to watch replay
+                                </div>
+                            `;
+                            document.getElementById('closePlayedVideo').addEventListener('click', arguments.callee);
+                        });
+                    } else if (section === 'tournament') {
+                        // For tournament matches, use the overlay
+                        videoPlayer.innerHTML = `
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/${videoId}${autoplayParam}" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        `;
+                        videoOverlay.classList.add('active');
+                    }
                 }
             } else {
                 if (useOverlay) {
                     videoPlayer.innerHTML = '<div class="youtube-placeholder">Invalid YouTube URL</div>';
                 } else {
-                    youtubePlayer.innerHTML = `
-                        <button class="close-video" id="closeVideo">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <div class="youtube-placeholder">Invalid YouTube URL</div>
-                    `;
-                    document.getElementById('closeVideo').addEventListener('click', function() {
+                    if (section === 'live') {
                         youtubePlayer.innerHTML = `
                             <button class="close-video" id="closeVideo">
                                 <i class="fas fa-times"></i>
                             </button>
-                            <div class="youtube-placeholder">
-                                Select a live match to watch
-                            </div>
+                            <div class="youtube-placeholder">Invalid YouTube URL</div>
                         `;
-                        document.getElementById('closeVideo').addEventListener('click', arguments.callee);
-                    });
+                        document.getElementById('closeVideo').addEventListener('click', function() {
+                            youtubePlayer.innerHTML = `
+                                <button class="close-video" id="closeVideo">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="youtube-placeholder">
+                                    Select a live match to watch
+                                </div>
+                            `;
+                            document.getElementById('closeVideo').addEventListener('click', arguments.callee);
+                        });
+                    } else if (section === 'played') {
+                        playedYoutubePlayer.innerHTML = `
+                            <button class="close-video" id="closePlayedVideo">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="youtube-placeholder">Invalid YouTube URL</div>
+                        `;
+                        document.getElementById('closePlayedVideo').addEventListener('click', function() {
+                            playedYoutubePlayer.innerHTML = `
+                                <button class="close-video" id="closePlayedVideo">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="youtube-placeholder">
+                                    Select a match to watch replay
+                                </div>
+                            `;
+                            document.getElementById('closePlayedVideo').addEventListener('click', arguments.callee);
+                        });
+                    }
                 }
             }
         }
@@ -1972,6 +2859,8 @@
             e.preventDefault();
             
             const matchStatus = document.getElementById('matchStatus').value;
+            const matchRoundType = document.getElementById('matchRoundType').value;
+            const matchRoundName = document.getElementById('matchRoundName').value;
             const team1 = document.getElementById('team1').value;
             const team2 = document.getElementById('team2').value;
             const matchDate = document.getElementById('matchDate').value;
@@ -1983,8 +2872,23 @@
                 return;
             }
             
+            // Get round name if round type is selected
+            let roundName = '';
+            if (matchRoundType && matchRoundName) {
+                if (matchRoundType === 'atoll') {
+                    const round = atollRounds.find(r => r.id === matchRoundName);
+                    roundName = round ? round.name : '';
+                } else {
+                    const round = zoneRounds.find(r => r.id === matchRoundName);
+                    roundName = round ? round.name : '';
+                }
+            }
+            
             const newMatch = {
                 status: matchStatus,
+                roundType: matchRoundType || null,
+                roundId: matchRoundName || null,
+                roundName: roundName || null,
                 team1,
                 team2,
                 date: matchDate,
@@ -1996,6 +2900,27 @@
                 .then(() => {
                     alert('Match added successfully!');
                     matchForm.reset();
+                    
+                    // If match has round information, also add to tournament matches
+                    if (matchRoundType && matchRoundName) {
+                        const tournamentMatch = {
+                            roundId: matchRoundName,
+                            roundName: roundName,
+                            team1Id: team1,
+                            team2Id: team2,
+                            date: matchDate,
+                            youtubeLink: youtubeLink || null,
+                            status: matchStatus
+                        };
+                        
+                        database.ref(`${matchRoundType}Matches`).push(tournamentMatch)
+                            .then(() => {
+                                console.log('Match also added to tournament schedule');
+                            })
+                            .catch((error) => {
+                                console.error('Error adding match to tournament:', error);
+                            });
+                    }
                 })
                 .catch((error) => {
                     alert('Error adding match: ' + error.message);
@@ -2048,34 +2973,198 @@
                 });
         }
 
+        // Handle Atoll Round Form Submission
+        function handleAtollRoundSubmit(e) {
+            e.preventDefault();
+            
+            const atollRoundName = document.getElementById('atollRoundName').value;
+            
+            const newRound = {
+                name: atollRoundName,
+                type: 'atoll'
+            };
+            
+            // Save to Firebase
+            database.ref('atollRounds').push(newRound)
+                .then(() => {
+                    alert('Atoll round added successfully!');
+                    atollRoundForm.reset();
+                })
+                .catch((error) => {
+                    alert('Error adding atoll round: ' + error.message);
+                });
+        }
+
+        // Handle Zone Round Form Submission
+        function handleZoneRoundSubmit(e) {
+            e.preventDefault();
+            
+            const zoneRoundName = document.getElementById('zoneRoundName').value;
+            
+            const newRound = {
+                name: zoneRoundName,
+                type: 'zone'
+            };
+            
+            // Save to Firebase
+            database.ref('zoneRounds').push(newRound)
+                .then(() => {
+                    alert('Zone round added successfully!');
+                    zoneRoundForm.reset();
+                })
+                .catch((error) => {
+                    alert('Error adding zone round: ' + error.message);
+                });
+        }
+
         // Render Admin Content
         function renderAdminContent() {
             adminContentList.innerHTML = '';
             
             if (matches.length === 0) {
-                adminContentList.innerHTML = '<p>No matches to manage.</p>';
+                adminContentList.innerHTML = `
+                    <div class="admin-empty-state">
+                        <i class="fas fa-futbol"></i>
+                        <h3>No Matches Found</h3>
+                        <p>Add your first match using the form above.</p>
+                    </div>
+                `;
                 return;
             }
             
+            // Get filter values
+            const searchTerm = adminSearch.value.toLowerCase();
+            const statusFilter = adminStatusFilter.value;
+            const atollFilter = adminAtollFilter.value;
+            const roundFilter = adminRoundFilter.value;
+            
+            // Filter matches
+            let filteredMatches = matches.filter(match => {
+                // Find team details
+                const team1 = islands.find(island => island.id === match.team1);
+                const team2 = islands.find(island => island.id === match.team2);
+                
+                if (!team1 || !team2) return false;
+                
+                // Apply search filter
+                if (searchTerm && 
+                    !team1.name.toLowerCase().includes(searchTerm) && 
+                    !team2.name.toLowerCase().includes(searchTerm)) {
+                    return false;
+                }
+                
+                // Apply status filter
+                if (statusFilter && match.status !== statusFilter) {
+                    return false;
+                }
+                
+                // Apply atoll filter
+                if (atollFilter && !isMatchInAtoll(match, atollFilter)) {
+                    return false;
+                }
+                
+                // Apply round filter
+                if (roundFilter && match.roundId !== roundFilter) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            if (filteredMatches.length === 0) {
+                adminContentList.innerHTML = `
+                    <div class="admin-empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3>No Matches Match Your Criteria</h3>
+                        <p>Try adjusting your search or filters.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort matches by date (newest first)
+            filteredMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
             // Add matches to admin list
-            matches.forEach(match => {
+            filteredMatches.forEach(match => {
                 // Find team details
                 const team1 = islands.find(island => island.id === match.team1);
                 const team2 = islands.find(island => island.id === match.team2);
                 
                 if (!team1 || !team2) return; // Skip if teams not found
                 
-                const adminItem = document.createElement('div');
-                adminItem.className = 'admin-item';
-                adminItem.innerHTML = `
-                    <div>
-                        <strong>${team1.name} vs ${team2.name}</strong>
-                        <div>${new Date(match.date).toLocaleString()} - <span class="match-status status-${match.status}">${match.status}</span></div>
-                        <div class="admin-links">
-                            ${match.youtubeLink ? `<small>YouTube: ${match.youtubeLink}</small>` : ''}
+                const matchDate = new Date(match.date);
+                
+                const adminMatchItem = document.createElement('div');
+                adminMatchItem.className = 'admin-match-item';
+                
+                // Create score form for completed matches without scores
+                let scoreForm = '';
+                if (match.status === 'completed' && (match.score1 === undefined || match.score2 === undefined)) {
+                    scoreForm = `
+                        <div class="score-form">
+                            <input type="number" class="score-input" id="score1-${match.id}" placeholder="Score 1" min="0">
+                            <span>vs</span>
+                            <input type="number" class="score-input" id="score2-${match.id}" placeholder="Score 2" min="0">
+                            <button class="btn btn-primary btn-small save-score-btn" data-id="${match.id}">
+                                Save Score
+                            </button>
+                        </div>
+                    `;
+                } else if (match.status === 'completed' && match.score1 !== undefined && match.score2 !== undefined) {
+                    scoreForm = `
+                        <div class="score-display">
+                            Score: ${match.score1} - ${match.score2}
+                        </div>
+                    `;
+                }
+                
+                adminMatchItem.innerHTML = `
+                    <div class="admin-match-header">
+                        <div class="admin-match-status admin-status-${match.status}">
+                            ${match.status.charAt(0).toUpperCase() + match.status.slice(1)}
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn delete-btn" data-id="${match.id}" data-type="match" title="Delete Match">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="item-actions">
+                    <div class="admin-match-teams">
+                        <div class="admin-team">
+                            <div class="admin-team-logo">
+                                ${team1.logo ? 
+                                    `<img src="${team1.logo}" alt="${team1.name}" onerror="this.parentElement.innerHTML='${team1.name.substring(0, 2)}'">` : 
+                                    team1.name.substring(0, 2)
+                                }
+                            </div>
+                            <span>${team1.name}</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="admin-team">
+                            <div class="admin-team-logo">
+                                ${team2.logo ? 
+                                    `<img src="${team2.logo}" alt="${team2.name}" onerror="this.parentElement.innerHTML='${team2.name.substring(0, 2)}'">` : 
+                                    team2.name.substring(0, 2)
+                                }
+                            </div>
+                            <span>${team2.name}</span>
+                        </div>
+                    </div>
+                    <div class="admin-match-details">
+                        <div><strong>Date & Time:</strong> ${matchDate.toLocaleDateString()} at ${matchDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        <div><strong>Atoll:</strong> ${getMatchAtoll(match)}</div>
+                        ${match.roundType && match.roundName ? `
+                            <div><strong>Round:</strong> ${match.roundType === 'atoll' ? 'Atoll Round' : 'Zone Round'} - ${match.roundName}</div>
+                        ` : ''}
+                    </div>
+                    ${scoreForm}
+                    ${match.youtubeLink ? `
+                        <div class="admin-match-youtube">
+                            <strong>YouTube:</strong> <a href="${match.youtubeLink}" target="_blank">${match.youtubeLink}</a>
+                        </div>
+                    ` : ''}
+                    <div class="admin-match-actions">
                         <div class="status-selector">
                             <div class="status-option ${match.status === 'upcoming' ? 'active' : ''}" data-id="${match.id}" data-status="upcoming">
                                 Upcoming
@@ -2087,13 +3176,15 @@
                                 Completed
                             </div>
                         </div>
-                        <button class="action-btn delete-btn" data-id="${match.id}" data-type="match">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                        ${match.youtubeLink ? `
+                            <button class="btn btn-primary btn-small watch-btn" data-link="${match.youtubeLink}" data-section="admin">
+                                Watch
+                            </button>
+                        ` : ''}
                     </div>
                 `;
                 
-                adminContentList.appendChild(adminItem);
+                adminContentList.appendChild(adminMatchItem);
             });
             
             // Add event listeners to status options
@@ -2121,6 +3212,53 @@
             document.querySelectorAll('.delete-btn').forEach(btn => {
                 btn.addEventListener('click', handleDelete);
             });
+            
+            // Add event listeners to save score buttons
+            document.querySelectorAll('.save-score-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const matchId = this.getAttribute('data-id');
+                    const score1 = parseInt(document.getElementById(`score1-${matchId}`).value);
+                    const score2 = parseInt(document.getElementById(`score2-${matchId}`).value);
+                    
+                    if (isNaN(score1) || isNaN(score2)) {
+                        alert('Please enter valid scores for both teams.');
+                        return;
+                    }
+                    
+                    updateMatchScore(matchId, score1, score2);
+                });
+            });
+            
+            // Add event listeners to watch buttons
+            document.querySelectorAll('.watch-btn[data-section="admin"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const link = this.getAttribute('data-link');
+                    if (link) {
+                        loadYouTubeVideo(link, true, true, 'admin');
+                    }
+                });
+            });
+        }
+
+        // Get match atoll information
+        function getMatchAtoll(match) {
+            const team1 = islands.find(island => island.id === match.team1);
+            const team2 = islands.find(island => island.id === match.team2);
+            
+            if (!team1 || !team2) return 'Unknown';
+            
+            const atoll1 = atolls.find(atoll => atoll.id === team1.atollId);
+            const atoll2 = atolls.find(atoll => atoll.id === team2.atollId);
+            
+            if (atoll1 && atoll2) {
+                if (atoll1.id === atoll2.id) {
+                    return atoll1.name;
+                } else {
+                    return `${atoll1.name} vs ${atoll2.name}`;
+                }
+            }
+            
+            return 'Unknown';
         }
 
         // Render Atoll Management
@@ -2181,6 +3319,68 @@
             });
         }
 
+        // Render Round Management
+        function renderRoundManagement() {
+            roundManagementList.innerHTML = '';
+            
+            // Add atoll rounds
+            if (atollRounds.length > 0) {
+                const atollRoundsSection = document.createElement('div');
+                atollRoundsSection.innerHTML = '<h4>Atoll Rounds</h4>';
+                
+                atollRounds.forEach(round => {
+                    const roundItem = document.createElement('div');
+                    roundItem.className = 'admin-item';
+                    roundItem.innerHTML = `
+                        <div>
+                            <strong>${round.name}</strong>
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn delete-btn" data-id="${round.id}" data-type="atollRound">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    atollRoundsSection.appendChild(roundItem);
+                });
+                
+                roundManagementList.appendChild(atollRoundsSection);
+            }
+            
+            // Add zone rounds
+            if (zoneRounds.length > 0) {
+                const zoneRoundsSection = document.createElement('div');
+                zoneRoundsSection.innerHTML = '<h4>Zone Rounds</h4>';
+                
+                zoneRounds.forEach(round => {
+                    const roundItem = document.createElement('div');
+                    roundItem.className = 'admin-item';
+                    roundItem.innerHTML = `
+                        <div>
+                            <strong>${round.name}</strong>
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn delete-btn" data-id="${round.id}" data-type="zoneRound">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    zoneRoundsSection.appendChild(roundItem);
+                });
+                
+                roundManagementList.appendChild(zoneRoundsSection);
+            }
+            
+            if (atollRounds.length === 0 && zoneRounds.length === 0) {
+                roundManagementList.innerHTML = '<p>No rounds added yet.</p>';
+            }
+            
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-btn[data-type="atollRound"], .delete-btn[data-type="zoneRound"]').forEach(btn => {
+                btn.addEventListener('click', handleDelete);
+            });
+        }
+
         // Update match status
         function updateMatchStatus(matchId, newStatus) {
             database.ref('matches/' + matchId).update({
@@ -2197,6 +3397,21 @@
             })
             .catch((error) => {
                 alert('Error updating match status: ' + error.message);
+            });
+        }
+
+        // Update match score
+        function updateMatchScore(matchId, score1, score2) {
+            database.ref('matches/' + matchId).update({
+                score1: score1,
+                score2: score2
+            })
+            .then(() => {
+                alert('Score updated successfully!');
+                renderAdminContent();
+            })
+            .catch((error) => {
+                alert('Error updating score: ' + error.message);
             });
         }
 
@@ -2229,6 +3444,22 @@
                         })
                         .catch((error) => {
                             alert('Error deleting island: ' + error.message);
+                        });
+                } else if (type === 'atollRound') {
+                    database.ref('atollRounds/' + id).remove()
+                        .then(() => {
+                            alert('Atoll round deleted successfully!');
+                        })
+                        .catch((error) => {
+                            alert('Error deleting atoll round: ' + error.message);
+                        });
+                } else if (type === 'zoneRound') {
+                    database.ref('zoneRounds/' + id).remove()
+                        .then(() => {
+                            alert('Zone round deleted successfully!');
+                        })
+                        .catch((error) => {
+                            alert('Error deleting zone round: ' + error.message);
                         });
                 }
             }
