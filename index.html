@@ -354,6 +354,72 @@
             to { opacity: 1; }
         }
 
+        /* Phone Authentication Styles */
+        .phone-auth-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .country-code {
+            width: 80px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        body.dark-mode .country-code {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: var(--text-dark);
+        }
+
+        .phone-number {
+            flex: 1;
+        }
+
+        .verification-code-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .verification-code {
+            flex: 1;
+        }
+
+        .resend-code {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+            margin-top: 5px;
+        }
+
+        .resend-code:disabled {
+            color: #aaa;
+            cursor: not-allowed;
+        }
+
+        .timer {
+            color: #777;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        body.dark-mode .timer {
+            color: #aaa;
+        }
+
         /* Mobile-specific login styles */
         @media (max-width: 480px) {
             .login-container {
@@ -424,6 +490,14 @@
                 width: 35px;
                 height: 35px;
                 font-size: 16px;
+            }
+            
+            .phone-input-group {
+                flex-direction: column;
+            }
+            
+            .country-code {
+                width: 100%;
             }
         }
 
@@ -1941,10 +2015,6 @@
             
             <!-- Login Form -->
             <form class="auth-form active" id="loginForm">
-                
-                
-               
-                
                 <div class="login-form">
                     <div class="form-group">
                         <label for="loginEmail">Email Address</label>
@@ -2008,6 +2078,57 @@
             
             <div class="login-footer">
                 Developed by symcodermv
+            </div>
+        </div>
+    </div>
+
+    <!-- Phone Authentication Modal -->
+    <div id="phoneAuthModal" class="login-container" style="display: none; position: fixed; top: 0; left: 0; z-index: 10000;">
+        <div class="login-card">
+            <div class="login-logo">
+                <img src="WhatsApp Image 2025-11-20 at 22.04.52.jpeg" alt="Golden Futsal Association Logo">
+            </div>
+            <h1 class="login-title">Phone Verification</h1>
+            <p class="login-subtitle">Enter your phone number to verify your account</p>
+            
+            <div class="phone-auth-container" id="phoneAuthContainer">
+                <!-- Phone number input step -->
+                <div id="phoneNumberStep">
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <div class="phone-input-group">
+                            <select id="countryCode" class="country-code">
+                                <option value="+960">+960 (Maldives)</option>
+                                <option value="+91">+91 (India)</option>
+                                <option value="+1">+1 (USA)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+61">+61 (Australia)</option>
+                                <option value="+65">+65 (Singapore)</option>
+                                <option value="+60">+60 (Malaysia)</option>
+                                <option value="+66">+66 (Thailand)</option>
+                                <option value="+971">+971 (UAE)</option>
+                                <option value="+966">+966 (Saudi Arabia)</option>
+                            </select>
+                            <input type="tel" id="phoneNumber" class="phone-number" placeholder="Enter your phone number" required>
+                        </div>
+                    </div>
+                    <button type="button" id="sendVerificationCode" class="login-submit">Send Verification Code</button>
+                </div>
+                
+                <!-- Verification code input step -->
+                <div id="verificationCodeStep" style="display: none;">
+                    <div class="form-group">
+                        <label for="verificationCode">Verification Code</label>
+                        <div class="verification-code-group">
+                            <input type="text" id="verificationCode" class="verification-code" placeholder="Enter verification code" required>
+                        </div>
+                        <button type="button" class="resend-code" id="resendCode">Resend Code</button>
+                        <div class="timer" id="resendTimer">Resend code in <span id="countdown">60</span> seconds</div>
+                    </div>
+                    <button type="button" id="verifyCode" class="login-submit">Verify Code</button>
+                </div>
+                
+                <button type="button" id="cancelPhoneAuth" class="btn btn-secondary" style="margin-top: 10px;">Cancel</button>
             </div>
         </div>
     </div>
@@ -2424,25 +2545,22 @@
     </div>
 
     <script>
-       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAWZhhfPQYjYWgRizSlC8CgXmw7p-etF_k",
-  authDomain: "testfile-d4e33.firebaseapp.com",
-  databaseURL: "https://testfile-d4e33-default-rtdb.firebaseio.com",
-  projectId: "testfile-d4e33",
-  storageBucket: "testfile-d4e33.firebasestorage.app",
-  messagingSenderId: "506950055235",
-  appId: "1:506950055235:web:3b4777aa5f63771ad0ebf6",
-  measurementId: "G-HYRNNJ4YRQ"
-};
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAWZhhfPQYjYWgRizSlC8CgXmw7p-etF_k",
+            authDomain: "testfile-d4e33.firebaseapp.com",
+            databaseURL: "https://testfile-d4e33-default-rtdb.firebaseio.com",
+            projectId: "testfile-d4e33",
+            storageBucket: "testfile-d4e33.firebasestorage.app",
+            messagingSenderId: "506950055235",
+            appId: "1:506950055235:web:3b4777aa5f63771ad0ebf6",
+            measurementId: "G-HYRNNJ4YRQ"
+        };
 
-//Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-const auth = firebase.auth();
-
-
-
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const auth = firebase.auth();
 
         // DOM Elements
         const loginPage = document.getElementById('loginPage');
@@ -2479,6 +2597,21 @@ const auth = firebase.auth();
         const closeOverlay = document.getElementById('closeOverlay');
         const videoPlayer = document.getElementById('videoPlayer');
         const liveMatchAlert = document.getElementById('liveMatchAlert');
+        
+        // Phone Authentication Elements
+        const phoneAuthModal = document.getElementById('phoneAuthModal');
+        const phoneAuthContainer = document.getElementById('phoneAuthContainer');
+        const phoneNumberStep = document.getElementById('phoneNumberStep');
+        const verificationCodeStep = document.getElementById('verificationCodeStep');
+        const countryCode = document.getElementById('countryCode');
+        const phoneNumber = document.getElementById('phoneNumber');
+        const sendVerificationCode = document.getElementById('sendVerificationCode');
+        const verificationCode = document.getElementById('verificationCode');
+        const verifyCode = document.getElementById('verifyCode');
+        const resendCode = document.getElementById('resendCode');
+        const resendTimer = document.getElementById('resendTimer');
+        const countdown = document.getElementById('countdown');
+        const cancelPhoneAuth = document.getElementById('cancelPhoneAuth');
         
         // Filter elements
         const upcomingAtollFilter = document.getElementById('upcomingAtollFilter');
@@ -2541,6 +2674,11 @@ const auth = firebase.auth();
         let users = [];
         let liveMatchesCount = 0;
         const MAX_LIVE_MATCHES = 2;
+        
+        // Phone Authentication Variables
+        let confirmationResult = null;
+        let resendTimerInterval = null;
+        let userRegistrationData = null;
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', function() {
@@ -2763,6 +2901,176 @@ const auth = firebase.auth();
             adminStatusFilter.addEventListener('change', () => renderAdminContent());
             adminAtollFilter.addEventListener('change', () => renderAdminContent());
             adminRoundFilter.addEventListener('change', () => renderAdminContent());
+            
+            // Phone Authentication Events
+            sendVerificationCode.addEventListener('click', sendVerificationCodeHandler);
+            verifyCode.addEventListener('click', verifyCodeHandler);
+            resendCode.addEventListener('click', resendCodeHandler);
+            cancelPhoneAuth.addEventListener('click', cancelPhoneAuthHandler);
+        }
+
+        // Phone Authentication Functions
+        function sendVerificationCodeHandler() {
+            const fullPhoneNumber = countryCode.value + phoneNumber.value;
+            
+            if (!phoneNumber.value) {
+                alert('Please enter your phone number');
+                return;
+            }
+            
+            // Configure Firebase reCAPTCHA verifier
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sendVerificationCode', {
+                'size': 'invisible',
+                'callback': function(response) {
+                    // reCAPTCHA solved, allow signInWithPhoneNumber
+                    sendVerificationCodeHandler();
+                }
+            });
+            
+            const appVerifier = window.recaptchaVerifier;
+            
+            // Send verification code
+            auth.signInWithPhoneNumber(fullPhoneNumber, appVerifier)
+                .then((result) => {
+                    confirmationResult = result;
+                    // Show verification code step
+                    phoneNumberStep.style.display = 'none';
+                    verificationCodeStep.style.display = 'block';
+                    
+                    // Start resend timer
+                    startResendTimer();
+                    
+                    console.log('Verification code sent successfully');
+                })
+                .catch((error) => {
+                    console.error('Error sending verification code:', error);
+                    alert('Error sending verification code: ' + error.message);
+                    
+                    // Reset reCAPTCHA
+                    if (window.recaptchaVerifier) {
+                        window.recaptchaVerifier.clear();
+                        window.recaptchaVerifier = null;
+                    }
+                });
+        }
+
+        function verifyCodeHandler() {
+            const code = verificationCode.value;
+            
+            if (!code) {
+                alert('Please enter the verification code');
+                return;
+            }
+            
+            confirmationResult.confirm(code)
+                .then((result) => {
+                    // User signed in successfully
+                    const user = result.user;
+                    
+                    // Complete user registration with phone number
+                    completeUserRegistration(user);
+                    
+                    // Hide phone auth modal
+                    phoneAuthModal.style.display = 'none';
+                    
+                    console.log('Phone authentication successful');
+                })
+                .catch((error) => {
+                    console.error('Error verifying code:', error);
+                    alert('Error verifying code: ' + error.message);
+                });
+        }
+
+        function resendCodeHandler() {
+            if (resendCode.disabled) return;
+            
+            const fullPhoneNumber = countryCode.value + phoneNumber.value;
+            const appVerifier = window.recaptchaVerifier;
+            
+            auth.signInWithPhoneNumber(fullPhoneNumber, appVerifier)
+                .then((result) => {
+                    confirmationResult = result;
+                    // Restart resend timer
+                    startResendTimer();
+                    
+                    console.log('Verification code resent successfully');
+                    alert('Verification code resent successfully');
+                })
+                .catch((error) => {
+                    console.error('Error resending verification code:', error);
+                    alert('Error resending verification code: ' + error.message);
+                });
+        }
+
+        function cancelPhoneAuthHandler() {
+            // Hide phone auth modal
+            phoneAuthModal.style.display = 'none';
+            
+            // Reset form
+            phoneNumber.value = '';
+            verificationCode.value = '';
+            phoneNumberStep.style.display = 'block';
+            verificationCodeStep.style.display = 'none';
+            
+            // Clear timer
+            if (resendTimerInterval) {
+                clearInterval(resendTimerInterval);
+                resendTimerInterval = null;
+            }
+            
+            // Reset reCAPTCHA
+            if (window.recaptchaVerifier) {
+                window.recaptchaVerifier.clear();
+                window.recaptchaVerifier = null;
+            }
+        }
+
+        function startResendTimer() {
+            let timeLeft = 60;
+            resendCode.disabled = true;
+            resendTimer.style.display = 'block';
+            
+            resendTimerInterval = setInterval(() => {
+                timeLeft--;
+                countdown.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(resendTimerInterval);
+                    resendCode.disabled = false;
+                    resendTimer.style.display = 'none';
+                }
+            }, 1000);
+        }
+
+        function completeUserRegistration(user) {
+            if (!userRegistrationData) return;
+            
+            const { fullName, email, password, contact } = userRegistrationData;
+            
+            // Update user profile with name
+            user.updateProfile({
+                displayName: fullName
+            }).then(() => {
+                // Save additional user data to Firebase
+                saveUserData(user, {
+                    contact: contact,
+                    phoneNumber: countryCode.value + phoneNumber.value
+                });
+                
+                // Switch to login tab
+                authTabs.forEach(t => t.classList.remove('active'));
+                authTabs[0].classList.add('active');
+                authForms.forEach(form => form.classList.remove('active'));
+                loginForm.classList.add('active');
+                
+                alert('Account created successfully! Please sign in.');
+                
+                // Reset registration data
+                userRegistrationData = null;
+            }).catch((error) => {
+                console.error('Error updating user profile:', error);
+                alert('Error completing registration: ' + error.message);
+            });
         }
 
         // Authentication Functions
@@ -2810,32 +3118,16 @@ const auth = firebase.auth();
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
             
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // User created successfully
-                    const user = userCredential.user;
-                    
-                    // Update user profile with name
-                    user.updateProfile({
-                        displayName: fullName
-                    }).then(() => {
-                        // Save additional user data to Firebase
-                        saveUserData(user, {contact: contact});
-                        
-                        // Switch to login tab
-                        authTabs.forEach(t => t.classList.remove('active'));
-                        authTabs[0].classList.add('active');
-                        authForms.forEach(form => form.classList.remove('active'));
-                        loginForm.classList.add('active');
-                        
-                        alert('Account created successfully! Please sign in.');
-                    });
-                })
-                .catch((error) => {
-                    // Handle errors
-                    console.error('Registration error', error);
-                    alert('Error creating account: ' + error.message);
-                });
+            // Store registration data for later use
+            userRegistrationData = {
+                fullName,
+                contact,
+                email,
+                password
+            };
+            
+            // Show phone authentication modal
+            phoneAuthModal.style.display = 'flex';
         }
 
         function signOut() {
