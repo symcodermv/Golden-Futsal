@@ -9,6 +9,8 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    
     <style>
         :root {
             --primary: #e10600;
@@ -36,6 +38,7 @@
             background-color: var(--bg-light);
             color: var(--text-light);
             transition: var(--transition);
+            min-height: 100vh;
         }
 
         body.dark-mode {
@@ -43,7 +46,255 @@
             color: var(--text-dark);
         }
 
-        /* Splash Screen */
+        /* Login Page Styles */
+        .login-container {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e10600 0%, #b30500 100%);
+            padding: 20px;
+        }
+
+        .login-card {
+            background-color: var(--card-light);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .login-card {
+            background-color: var(--card-dark);
+        }
+
+        .login-logo {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #e10600;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-title {
+            color: var(--primary);
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .login-subtitle {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        body.dark-mode .login-subtitle {
+            color: var(--text-dark);
+        }
+
+        .login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            padding: 15px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-btn:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .login-btn i {
+            font-size: 20px;
+        }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        body.dark-mode .login-divider::before,
+        body.dark-mode .login-divider::after {
+            background-color: #444;
+        }
+
+        .login-divider span {
+            padding: 0 15px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        body.dark-mode .login-divider span {
+            color: #aaa;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .form-group label {
+            color: var(--text-dark);
+        }
+
+        .form-group input {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        body.dark-mode .form-group input {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(225, 6, 0, 0.2);
+        }
+
+        .login-submit {
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .login-submit:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .login-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        .login-footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        body.dark-mode .login-footer {
+            color: #aaa;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .user-name {
+            color: var(--text-dark);
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(225, 6, 0, 0.1);
+        }
+
+        /* Main App Styles (existing) */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -94,13 +345,11 @@
             margin-top: 20px;
         }
 
-        /* Main Layout */
         .container {
             display: flex;
             min-height: 100vh;
         }
 
-        /* Sidebar */
         .sidebar {
             width: 250px;
             background-color: var(--sidebar-light);
@@ -182,7 +431,6 @@
             color: var(--primary);
         }
 
-        /* Main Content */
         .main-content {
             flex: 1;
             padding: 20px;
@@ -220,7 +468,6 @@
             color: var(--text-dark);
         }
 
-        /* Content Sections */
         .content-section {
             display: none;
         }
@@ -1204,6 +1451,24 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+            
+            .login-logo {
+                width: 100px;
+                height: 100px;
+                font-size: 32px;
+            }
+            
+            .login-title {
+                font-size: 28px;
+            }
+            
+            .user-info {
+                display: none;
+            }
+
             .container {
                 flex-direction: column;
             }
@@ -1395,6 +1660,47 @@
     </style>
 </head>
 <body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-card">
+            <div class="login-logo">Golden Futsal</div>
+            <h1 class="login-title">Golden Futsal Association</h1>
+            <p class="login-subtitle">Sign in to access the tournament dashboard</p>
+            
+            <button id="googleSignIn" class="login-btn">
+                <i class="fab fa-google"></i>
+                Sign in with Google
+            </button>
+            
+            <div class="login-divider">
+                <span>Or sign in with email</span>
+            </div>
+            
+            <form class="login-form" id="emailLoginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="login-submit">Sign In</button>
+            </form>
+            
+            <div class="login-links">
+                <a href="#" class="login-link" id="forgotPassword">Forgot Password?</a>
+                <a href="#" class="login-link" id="createAccount">Create Account</a>
+            </div>
+            
+            <div class="login-footer">
+                By signing in, you agree to our Terms of Service and Privacy Policy
+            </div>
+        </div>
+    </div>
+
     <!-- Splash Screen -->
     <div class="splash-screen" id="splashScreen">
         <div class="logos-container">
@@ -1414,8 +1720,8 @@
         </div>
     </div>
 
-    <!-- Main App -->
-    <div class="container">
+    <!-- Main App (hidden until login) -->
+    <div id="mainApp" class="container" style="display: none;">
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
@@ -1455,6 +1761,16 @@
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <i class="fas fa-bars"></i>
                 </button>
+                
+                <div class="user-info" id="userInfo">
+                    <div class="user-avatar">
+                        <img id="userAvatar" src="" alt="User Avatar">
+                    </div>
+                    <div class="user-name" id="userName"></div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
                 
                 <button class="theme-toggle" id="themeToggle">
                     <i class="fas fa-moon"></i>
@@ -1796,9 +2112,20 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+        const auth = firebase.auth();
 
         // DOM Elements
+        const loginPage = document.getElementById('loginPage');
+        const mainApp = document.getElementById('mainApp');
         const splashScreen = document.getElementById('splashScreen');
+        const googleSignIn = document.getElementById('googleSignIn');
+        const emailLoginForm = document.getElementById('emailLoginForm');
+        const forgotPassword = document.getElementById('forgotPassword');
+        const createAccount = document.getElementById('createAccount');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userInfo = document.getElementById('userInfo');
+        const userName = document.getElementById('userName');
+        const userAvatar = document.getElementById('userAvatar');
         const themeToggle = document.getElementById('themeToggle');
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
@@ -1886,11 +2213,20 @@
                 splashScreen.classList.add('hidden');
             }, 3000);
 
-            // Load initial data from Firebase
-            loadMatches();
-            loadTournamentData();
-            loadAtollsAndIslands();
-            loadRounds();
+            // Check if user is already logged in
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User is signed in
+                    showMainApp(user);
+                    loadMatches();
+                    loadTournamentData();
+                    loadAtollsAndIslands();
+                    loadRounds();
+                } else {
+                    // User is signed out
+                    showLoginPage();
+                }
+            });
 
             // Set up event listeners
             setupEventListeners();
@@ -1898,9 +2234,24 @@
 
         // Event Listeners
         function setupEventListeners() {
+            // Google Sign In
+            googleSignIn.addEventListener('click', signInWithGoogle);
+            
+            // Email/Password Sign In
+            emailLoginForm.addEventListener('submit', signInWithEmail);
+            
+            // Forgot Password
+            forgotPassword.addEventListener('click', handleForgotPassword);
+            
+            // Create Account
+            createAccount.addEventListener('click', handleCreateAccount);
+            
+            // Logout
+            logoutBtn.addEventListener('click', signOut);
+            
             // Theme toggle
             themeToggle.addEventListener('click', toggleTheme);
-
+            
             // Menu navigation
             menuItems.forEach(item => {
                 item.addEventListener('click', function() {
@@ -2062,6 +2413,99 @@
             adminStatusFilter.addEventListener('change', () => renderAdminContent());
             adminAtollFilter.addEventListener('change', () => renderAdminContent());
             adminRoundFilter.addEventListener('change', () => renderAdminContent());
+        }
+
+        // Authentication Functions
+        function signInWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    // User signed in successfully
+                    console.log('Google sign-in successful', result.user);
+                })
+                .catch((error) => {
+                    // Handle errors
+                    console.error('Google sign-in error', error);
+                    alert('Error signing in with Google: ' + error.message);
+                });
+        }
+
+        function signInWithEmail(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // User signed in successfully
+                    console.log('Email sign-in successful', userCredential.user);
+                })
+                .catch((error) => {
+                    // Handle errors
+                    console.error('Email sign-in error', error);
+                    alert('Error signing in: ' + error.message);
+                });
+        }
+
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            const email = prompt('Please enter your email address to reset your password:');
+            
+            if (email) {
+                auth.sendPasswordResetEmail(email)
+                    .then(() => {
+                        alert('Password reset email sent! Check your inbox.');
+                    })
+                    .catch((error) => {
+                        alert('Error sending reset email: ' + error.message);
+                    });
+            }
+        }
+
+        function handleCreateAccount(e) {
+            e.preventDefault();
+            const email = prompt('Please enter your email address:');
+            const password = prompt('Please enter a password (at least 6 characters):');
+            
+            if (email && password) {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        alert('Account created successfully! You are now signed in.');
+                    })
+                    .catch((error) => {
+                        alert('Error creating account: ' + error.message);
+                    });
+            }
+        }
+
+        function signOut() {
+            auth.signOut()
+                .then(() => {
+                    // User signed out successfully
+                    console.log('User signed out');
+                })
+                .catch((error) => {
+                    // Handle errors
+                    console.error('Sign out error', error);
+                    alert('Error signing out: ' + error.message);
+                });
+        }
+
+        // UI Functions
+        function showMainApp(user) {
+            loginPage.style.display = 'none';
+            mainApp.style.display = 'flex';
+            
+            // Update user info
+            userName.textContent = user.displayName || user.email;
+            userAvatar.src = user.photoURL || 'https://via.placeholder.com/40';
+        }
+
+        function showLoginPage() {
+            loginPage.style.display = 'flex';
+            mainApp.style.display = 'none';
         }
 
         // Toggle Theme
