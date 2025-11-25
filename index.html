@@ -84,6 +84,13 @@
             color: #e10600;
             margin: 0 auto 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .login-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .login-title {
@@ -249,52 +256,178 @@
             color: #aaa;
         }
 
-        .user-info {
+        .social-links {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-right: 15px;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .user-avatar {
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--primary);
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 18px;
+            transition: var(--transition);
+            text-decoration: none;
         }
 
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .user-name {
-            font-weight: 600;
-            color: var(--text-light);
+        .social-link.facebook {
+            background-color: #3b5998;
+            color: white;
         }
 
-        body.dark-mode .user-name {
+        .social-link.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .social-link.tiktok {
+            background-color: #000000;
+            color: white;
+        }
+
+        body.dark-mode .social-link {
+            background-color: #2a2a2a;
             color: var(--text-dark);
         }
 
-        .logout-btn {
-            background: none;
-            border: none;
-            color: var(--primary);
+        /* Fixed Auth Tabs - Inline Style */
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            background-color: #f5f5f5;
+        }
+
+        body.dark-mode .auth-tabs {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
             cursor: pointer;
-            font-size: 16px;
             transition: var(--transition);
-            padding: 5px 10px;
-            border-radius: 5px;
+            font-weight: 600;
         }
 
-        .logout-btn:hover {
-            background-color: rgba(225, 6, 0, 0.1);
+        .auth-tab:not(.active) {
+            background-color: transparent;
+            color: #777;
         }
 
-        /* Main App Styles */
+        body.dark-mode .auth-tab:not(.active) {
+            color: #aaa;
+        }
+
+        .auth-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Mobile-specific login styles */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 15px;
+                align-items: flex-start;
+            }
+            
+            .login-card {
+                padding: 25px 20px;
+                margin-top: 20px;
+            }
+            
+            .login-logo {
+                width: 100px;
+                height: 100px;
+                font-size: 32px;
+            }
+            
+            .login-title {
+                font-size: 28px;
+            }
+            
+            .login-subtitle {
+                font-size: 14px;
+            }
+            
+            .auth-tabs {
+                flex-direction: row;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            .auth-tab {
+                padding: 12px 10px;
+                font-size: 14px;
+            }
+            
+            .login-btn {
+                padding: 12px;
+                font-size: 15px;
+            }
+            
+            .login-btn i {
+                font-size: 18px;
+            }
+            
+            .login-submit {
+                padding: 12px;
+                font-size: 15px;
+            }
+            
+            .form-group input {
+                padding: 12px;
+                font-size: 15px;
+            }
+            
+            .login-links {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .social-link {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+
+        /* Splash Screen Styles */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -315,26 +448,26 @@
             pointer-events: none;
         }
 
-        .logos-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
+        .splash-logo {
+            width: 150px;
+            height: 150px;
             background-color: white;
             border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
             color: #e10600;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .splash-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .splash-title {
@@ -342,9 +475,17 @@
             font-size: 32px;
             font-weight: bold;
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
+        .splash-developer {
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Main App Styles */
         .container {
             display: flex;
             min-height: 100vh;
@@ -475,11 +616,6 @@
         .content-section.active {
             display: block;
             animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .section-title {
@@ -1571,7 +1707,18 @@
             }
             
             .login-title {
-                fontSize: 28px;
+                font-size: 28px;
+            }
+            
+            .auth-tabs {
+                flex-direction: row;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            .auth-tab {
+                padding: 12px 10px;
+                font-size: 14px;
             }
             
             .user-info {
@@ -1780,46 +1927,98 @@
     <!-- Login Page -->
     <div id="loginPage" class="login-container">
         <div class="login-card">
-            <div class="login-logo">Golden Futsal</div>
+            <div class="login-logo">
+                <img src="WhatsApp Image 2025-11-20 at 22.04.52.jpeg" alt="Golden Futsal Association Logo">
+            </div>
             <h1 class="login-title">Golden Futsal Association</h1>
             <p class="login-subtitle">Sign in to access the tournament dashboard</p>
             
-            <button id="googleSignIn" class="login-btn">
-                <i class="fab fa-google"></i>
-                Sign in with Google
-            </button>
-            
-            <div class="login-divider">
-                <span>Or sign in with email</span>
+            <!-- Fixed Auth Tabs - Inline Style -->
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-form="login">Sign In</div>
+                <div class="auth-tab" data-form="register">Create Account</div>
             </div>
             
-            <form class="login-form" id="emailLoginForm">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                </div>
+            <!-- Login Form -->
+            <form class="auth-form active" id="loginForm">
                 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password" required>
-                </div>
                 
-                <button type="submit" class="login-submit">Sign In</button>
+               
+                
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="login-submit">Sign In</button>
+                     <div class="login-divider">
+                    <span>Or sign in with email</span>
+                </div>
+                    <button type="button" id="googleSignIn" class="login-btn">
+                    <i class="fab fa-google"></i>
+                    Sign in with Google
+                </button>
+                </div>
             </form>
             
+            <!-- Registration Form -->
+            <form class="auth-form" id="registerForm">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="tel" id="contact" placeholder="Enter your contact number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerEmail">Email Address</label>
+                        <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" placeholder="Create a password" required>
+                    </div>
+                    
+                    <button type="submit" class="login-submit">Create Account</button>
+                </div>
+            </form>
+            
+            <div class="social-links">
+                <a href="#" class="social-link facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            
             <div class="login-footer">
-                By signing in, you agree to our Terms of Service and Privacy Policy
+                Developed by symcodermv
             </div>
         </div>
     </div>
 
     <!-- Splash Screen -->
     <div class="splash-screen" id="splashScreen">
-        <div class="logos-container">
-            <div class="logo">Golden Futsal</div>
-            <div class="logo">2025</div>
+        <div class="splash-logo">
+            <img src="WhatsApp Image 2025-11-20 at 22.04.52.jpeg" alt="Golden Futsal Association Logo">
         </div>
         <h1 class="splash-title">Golden Futsal Association</h1>
+        <p class="splash-developer">Developed by symcodermv</p>
     </div>
 
     <!-- Video Overlay -->
@@ -2225,29 +2424,35 @@
     </div>
 
     <script>
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAWZhhfPQYjYWgRizSlC8CgXmw7p-etF_k",
-            authDomain: "testfile-d4e33.firebaseapp.com",
-            databaseURL: "https://testfile-d4e33-default-rtdb.firebaseio.com",
-            projectId: "testfile-d4e33",
-            storageBucket: "testfile-d4e33.firebasestorage.app",
-            messagingSenderId: "506950055235",
-            appId: "1:506950055235:web:3b4777aa5f63771ad0ebf6",
-            measurementId: "G-HYRNNJ4YRQ"
-        };
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAWZhhfPQYjYWgRizSlC8CgXmw7p-etF_k",
+  authDomain: "testfile-d4e33.firebaseapp.com",
+  databaseURL: "https://testfile-d4e33-default-rtdb.firebaseio.com",
+  projectId: "testfile-d4e33",
+  storageBucket: "testfile-d4e33.firebasestorage.app",
+  messagingSenderId: "506950055235",
+  appId: "1:506950055235:web:3b4777aa5f63771ad0ebf6",
+  measurementId: "G-HYRNNJ4YRQ"
+};
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-        const auth = firebase.auth();
+//Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const auth = firebase.auth();
+
+
+
 
         // DOM Elements
         const loginPage = document.getElementById('loginPage');
         const mainApp = document.getElementById('mainApp');
         const splashScreen = document.getElementById('splashScreen');
         const googleSignIn = document.getElementById('googleSignIn');
-        const emailLoginForm = document.getElementById('emailLoginForm');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const authForms = document.querySelectorAll('.auth-form');
         const logoutBtn = document.getElementById('logoutBtn');
         const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
         const userInfo = document.getElementById('userInfo');
@@ -2366,11 +2571,29 @@
 
         // Event Listeners
         function setupEventListeners() {
+            // Auth tabs
+            authTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const formType = this.getAttribute('data-form');
+                    
+                    // Update active tab
+                    authTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target form
+                    authForms.forEach(form => form.classList.remove('active'));
+                    document.getElementById(`${formType}Form`).classList.add('active');
+                });
+            });
+
             // Google Sign In
             googleSignIn.addEventListener('click', signInWithGoogle);
             
             // Email/Password Sign In
-            emailLoginForm.addEventListener('submit', signInWithEmail);
+            loginForm.addEventListener('submit', signInWithEmail);
+            
+            // Registration
+            registerForm.addEventListener('submit', registerWithEmail);
             
             // Logout
             logoutBtn.addEventListener('click', signOut);
@@ -2564,8 +2787,8 @@
         function signInWithEmail(e) {
             e.preventDefault();
             
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
             
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
@@ -2576,6 +2799,42 @@
                     // Handle errors
                     console.error('Email sign-in error', error);
                     alert('Error signing in: ' + error.message);
+                });
+        }
+
+        function registerWithEmail(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const contact = document.getElementById('contact').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // User created successfully
+                    const user = userCredential.user;
+                    
+                    // Update user profile with name
+                    user.updateProfile({
+                        displayName: fullName
+                    }).then(() => {
+                        // Save additional user data to Firebase
+                        saveUserData(user, {contact: contact});
+                        
+                        // Switch to login tab
+                        authTabs.forEach(t => t.classList.remove('active'));
+                        authTabs[0].classList.add('active');
+                        authForms.forEach(form => form.classList.remove('active'));
+                        loginForm.classList.add('active');
+                        
+                        alert('Account created successfully! Please sign in.');
+                    });
+                })
+                .catch((error) => {
+                    // Handle errors
+                    console.error('Registration error', error);
+                    alert('Error creating account: ' + error.message);
                 });
         }
 
@@ -2593,13 +2852,14 @@
         }
 
         // Save user data to Firebase
-        function saveUserData(user) {
+        function saveUserData(user, additionalData = {}) {
             const userData = {
                 uid: user.uid,
                 displayName: user.displayName,
                 email: user.email,
                 photoURL: user.photoURL,
-                lastSignIn: new Date().toISOString()
+                lastSignIn: new Date().toISOString(),
+                ...additionalData
             };
             
             // Save to Firebase
@@ -3128,7 +3388,7 @@
             let roundInfo = '';
             if (match.roundType && match.roundName) {
                 roundInfo = `<div class="match-round" style="padding: 5px 15px; background-color: rgba(225, 6, 0, 0.1); font-size: 14px;">
-                    ${match.roundType === 'atoll' ? 'Atoll Round' : 'Zone Round'}: ${match.roundName}
+                    ${match.roundType === 'atoll' ? 'Atoll Round' : 'Zone Round'} - ${match.roundName}
                 </div>`;
             }
             
