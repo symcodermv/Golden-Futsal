@@ -12,7 +12,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     
     <style>
-        :root {
+               :root {
             --primary: #e10600;
             --primary-dark: #b30500;
             --secondary: #ffffff;
@@ -2679,6 +2679,7 @@
         let confirmationResult = null;
         let resendTimerInterval = null;
         let userRegistrationData = null;
+        let recaptchaVerifier = null;
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', function() {
@@ -2918,8 +2919,14 @@
                 return;
             }
             
-            // Configure Firebase reCAPTCHA verifier
-            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sendVerificationCode', {
+            // Clear any existing reCAPTCHA
+            if (recaptchaVerifier) {
+                recaptchaVerifier.clear();
+                recaptchaVerifier = null;
+            }
+            
+            // Create a new reCAPTCHA verifier
+            recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sendVerificationCode', {
                 'size': 'invisible',
                 'callback': function(response) {
                     // reCAPTCHA solved, allow signInWithPhoneNumber
@@ -2927,10 +2934,8 @@
                 }
             });
             
-            const appVerifier = window.recaptchaVerifier;
-            
             // Send verification code
-            auth.signInWithPhoneNumber(fullPhoneNumber, appVerifier)
+            auth.signInWithPhoneNumber(fullPhoneNumber, recaptchaVerifier)
                 .then((result) => {
                     confirmationResult = result;
                     // Show verification code step
@@ -2947,9 +2952,9 @@
                     alert('Error sending verification code: ' + error.message);
                     
                     // Reset reCAPTCHA
-                    if (window.recaptchaVerifier) {
-                        window.recaptchaVerifier.clear();
-                        window.recaptchaVerifier = null;
+                    if (recaptchaVerifier) {
+                        recaptchaVerifier.clear();
+                        recaptchaVerifier = null;
                     }
                 });
         }
@@ -2985,9 +2990,8 @@
             if (resendCode.disabled) return;
             
             const fullPhoneNumber = countryCode.value + phoneNumber.value;
-            const appVerifier = window.recaptchaVerifier;
             
-            auth.signInWithPhoneNumber(fullPhoneNumber, appVerifier)
+            auth.signInWithPhoneNumber(fullPhoneNumber, recaptchaVerifier)
                 .then((result) => {
                     confirmationResult = result;
                     // Restart resend timer
@@ -3019,9 +3023,9 @@
             }
             
             // Reset reCAPTCHA
-            if (window.recaptchaVerifier) {
-                window.recaptchaVerifier.clear();
-                window.recaptchaVerifier = null;
+            if (recaptchaVerifier) {
+                recaptchaVerifier.clear();
+                recaptchaVerifier = null;
             }
         }
 
@@ -3047,30 +3051,36 @@
             
             const { fullName, email, password, contact } = userRegistrationData;
             
-            // Update user profile with name
-            user.updateProfile({
-                displayName: fullName
-            }).then(() => {
-                // Save additional user data to Firebase
-                saveUserData(user, {
-                    contact: contact,
-                    phoneNumber: countryCode.value + phoneNumber.value
+            // Create user with email and password first
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Update user profile with name
+                    return userCredential.user.updateProfile({
+                        displayName: fullName
+                    });
+                })
+                .then(() => {
+                    // Save additional user data to Firebase
+                    saveUserData(user, {
+                        contact: contact,
+                        phoneNumber: countryCode.value + phoneNumber.value
+                    });
+                    
+                    // Switch to login tab
+                    authTabs.forEach(t => t.classList.remove('active'));
+                    authTabs[0].classList.add('active');
+                    authForms.forEach(form => form.classList.remove('active'));
+                    loginForm.classList.add('active');
+                    
+                    alert('Account created successfully! Please sign in.');
+                    
+                    // Reset registration data
+                    userRegistrationData = null;
+                })
+                .catch((error) => {
+                    console.error('Error completing registration:', error);
+                    alert('Error completing registration: ' + error.message);
                 });
-                
-                // Switch to login tab
-                authTabs.forEach(t => t.classList.remove('active'));
-                authTabs[0].classList.add('active');
-                authForms.forEach(form => form.classList.remove('active'));
-                loginForm.classList.add('active');
-                
-                alert('Account created successfully! Please sign in.');
-                
-                // Reset registration data
-                userRegistrationData = null;
-            }).catch((error) => {
-                console.error('Error updating user profile:', error);
-                alert('Error completing registration: ' + error.message);
-            });
         }
 
         // Authentication Functions
@@ -4633,62 +4643,6 @@
                 }
             }
         }
-    </script>
-    <script>
-
-
-// Send Verification Code
-function sendVerificationCodeHandler() {
-    const fullPhoneNumber = countryCode.value + phoneNumber.value;
-    
-    // Configure Firebase reCAPTCHA verifier
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sendVerificationCode', {
-        'size': 'invisible',
-        'callback': function(response) {
-            // reCAPTCHA solved, allow signInWithPhoneNumber
-            sendVerificationCodeHandler();
-        }
-    });
-    
-    const appVerifier = window.recaptchaVerifier;
-    
-    // Send verification code
-    auth.signInWithPhoneNumber(fullPhoneNumber, appVerifier)
-        .then((result) => {
-            confirmationResult = result;
-            // Show verification code step
-            phoneNumberStep.style.display = 'none';
-            verificationCodeStep.style.display = 'block';
-            
-            // Start resend timer
-            startResendTimer();
-        })
-        .catch((error) => {
-            console.error('Error sending verification code:', error);
-            alert('Error sending verification code: ' + error.message);
-        });
-}
-
-// Verify Code
-function verifyCodeHandler() {
-    const code = verificationCode.value;
-    
-    confirmationResult.confirm(code)
-        .then((result) => {
-            // User signed in successfully
-            const user = result.user;
-            
-            // Complete user registration with phone number
-            completeUserRegistration(user);
-            
-            // Hide phone auth modal
-            phoneAuthModal.style.display = 'none';
-        })
-        .catch((error) => {
-            console.error('Error verifying code:', error);
-            alert('Error verifying code: ' + error.message);
-        });
-}
     </script>
 </body>
 </html>
